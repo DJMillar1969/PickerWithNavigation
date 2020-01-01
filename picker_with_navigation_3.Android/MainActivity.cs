@@ -1,13 +1,8 @@
-﻿using UltimateConvertor.Droid;
-using System;
-using Xamarin.Essentials;
-using Xamarin.Forms;
-
-using Android;
+﻿
 using Android.App;
+using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
-using Android.Content.PM;
 
 
 namespace UltimateConvertor.Droid

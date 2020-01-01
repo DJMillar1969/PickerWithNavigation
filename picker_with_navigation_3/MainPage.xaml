@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="UltimateConvertor.MainPage"
              xmlns:ads="clr-namespace:UltimateConvertor;assembly=UltimateConvertor"
-             xmlns:abstractions="clr-namespace:Xam.FormsPlugin.Abstractions;assembly=AdMobView.FormsPlugin.Abstractions">
+            >
 
     <ContentPage.ToolbarItems >
 
@@ -14,9 +14,9 @@
 
     </ContentPage.ToolbarItems>
 
-    <!--<local:AdMobView AdUnitId="{Binding AdUnitId}" x:Name="AdBox" BackgroundColor="#FF2296F3"/>-->
+   
     <!--<ads:AdControlView x:Name="AdBox" BackgroundColor="#FF2296F3"></ads:AdControlView>-->
-    <!--<abstractions:AdMobView AdUnitId="ca-app-pub-3940256099942544/6300978111"   x:Name="AdBox"/>-->
-    <BoxView HeightRequest="40" x:Name="AdBox"/>
+    
+    <BoxView HeightRequest="40" x:Name="AdBox" BackgroundColor="#FF2296F3"/>
 
 </ContentPage>
