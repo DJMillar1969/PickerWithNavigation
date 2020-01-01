@@ -23,7 +23,7 @@
         <Label Text="For inquiries please contact: support@little-mountain-tech.com" FontSize="20" HorizontalTextAlignment="Center" TextColor="Black"/>
             <BoxView HeightRequest="15" />
             <Label Text="To the best of our knowledge the conversions and calculations in this app are accurate. We accept no liability for any damages that may be caused by your use of them. Please confirm that their accuracy is acceptable for your specific purpose."
-                   FontSize="16" HorizontalTextAlignment="Center" TextColor="Gray"/>
+                   FontSize="16" HorizontalTextAlignment="Center" TextColor="Gray" Padding="10,0,10,0"/>
                    
     </StackLayout>
 </ContentPage.Content>

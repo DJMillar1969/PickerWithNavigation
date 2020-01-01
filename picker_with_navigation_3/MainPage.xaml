@@ -17,6 +17,6 @@
    
     <!--<ads:AdControlView x:Name="AdBox" BackgroundColor="#FF2296F3"></ads:AdControlView>-->
     
-    <BoxView HeightRequest="40" x:Name="AdBox" BackgroundColor="#FF2296F3"/>
+    <BoxView HeightRequest="60" x:Name="AdBox" BackgroundColor="#FF2296F3" VerticalOptions="End"/>
 
 </ContentPage>

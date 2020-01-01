@@ -25,6 +25,7 @@ namespace UltimateConvertor
 			WebPages.Add(new WebPage { Name = "thermal_expansion_calculator.html", Title = "Thermal Expansion Calc's" });
 			WebPages.Add(new WebPage { Name = "triangle.html", Title = "Right Triangle Calculator" });
 			WebPages.Add(new WebPage { Name = "triangle2.html", Title = "Triangle Calculator" });
+			
 			Button button = new Button
 			{
 				Text = "About",
@@ -33,10 +34,20 @@ namespace UltimateConvertor
 			};
 			button.Clicked += async (sender, args) => await Navigation.PushAsync(new About());
 
+			BoxView adBox = new BoxView
+			{
+				BackgroundColor = Color.FromHex("FF2296F3"),
+				HeightRequest = 60,
+				VerticalOptions = LayoutOptions.EndAndExpand
+			};
+
+			
+
 			var layout = new StackLayout();
-			layout.Children.Add(listView);
+			layout.Children.Add(listStack);
 			layout.Children.Add(button);
-			layout.Padding = new Thickness(20, 20, 20, 0);
+			layout.Children.Add(adBox);
+			//layout.Padding = new Thickness(20, 20, 20, 0);
 			Content = layout;
 
 			BindingContext = this;

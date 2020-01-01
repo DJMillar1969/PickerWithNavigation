@@ -31,14 +31,7 @@ namespace UltimateConvertor
             browser.HorizontalOptions = LayoutOptions.FillAndExpand;
            
            
-
-
-           
-            AdBox.HeightRequest = 32;
-          
-           AdBox.VerticalOptions = LayoutOptions.End;
-          
-
+                    
             var layout = new StackLayout();
             layout.Children.Add(browser);
             layout.Children.Add(AdBox);
