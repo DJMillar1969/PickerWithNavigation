@@ -1,0 +1,163 @@
+﻿<!DOCTYPE HTML>
+
+<html>
+<head>
+	<title>Horse Power Calculator</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+input[readonly="readonly"]
+{
+border:0;
+}
+
+
+
+div.center
+{
+  width: 95vw;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.center
+{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.right
+{
+	text-align: right;
+}
+</style>
+
+<script type="text/javascript">
+window.onload = addListeners;
+
+
+function addListeners(){
+	document.getElementById('pressure_box').addEventListener("keyup",hydraulic_value_changed,false);
+	document.getElementById('flow_box').addEventListener("keyup",hydraulic_value_changed,false);
+	document.getElementById('hp_hydraulic_box').addEventListener("keyup",hydraulic_value_changed,false);
+	
+	document.getElementById('torque_box').addEventListener("keyup",rotational_value_changed,false);
+	document.getElementById('rpm_box').addEventListener("keyup",rotational_value_changed,false);
+	document.getElementById('hp_rotational_box').addEventListener("keyup",rotational_value_changed,false);
+	
+	document.getElementById('force_box').addEventListener("keyup",mechanical_value_changed,false);
+	document.getElementById('distance_box').addEventListener("keyup",mechanical_value_changed,false);
+	document.getElementById('seconds_box').addEventListener("keyup",mechanical_value_changed,false);
+	document.getElementById('hp_mechanical_box').addEventListener("keyup",mechanical_value_changed,false);
+	
+	document.getElementById('volts_box').addEventListener("keyup",electrical_value_changed,false);
+	document.getElementById('amps_box').addEventListener("keyup",electrical_value_changed,false);
+	document.getElementById('hp_electrical_box').addEventListener("keyup",electrical_value_changed,false);
+}
+
+
+function hydraulic_value_changed(){
+		var pressure = document.getElementById("pressure_box").value;
+	var flow = document.getElementById("flow_box").value;
+	var hp_hydraulic = pressure*flow/1714;
+	var watts = hp_hydraulic*746;
+	document.getElementById("hp_hydraulic_box").value = hp_hydraulic.toFixed(2);
+	document.getElementById("watts_box").value = watts.toFixed(2);
+}
+
+function rotational_value_changed(){
+	var torque = document.getElementById("torque_box").value;
+	var rpm = document.getElementById("rpm_box").value;
+	var hp_rotational = torque*rpm/63025;
+	var watts = hp_rotational*746;
+	document.getElementById("hp_rotational_box").value = hp_rotational.toFixed(2);
+	document.getElementById("watts_rotational_box").value = watts.toFixed(2);
+}
+
+function mechanical_value_changed(){
+	var force = document.getElementById("force_box").value;
+	var distance = document.getElementById("distance_box").value;
+	var seconds = document.getElementById("seconds_box").value;
+	var hp_mechanical = force*distance/seconds/550;
+	var watts = hp_mechanical*746;
+	document.getElementById("hp_mechanical_box").value = hp_mechanical.toFixed(2);
+	document.getElementById("watts_mechanical_box").value = watts.toFixed(2);
+}
+
+function electrical_value_changed(){
+	var volts = document.getElementById("volts_box").value;
+	var amps = document.getElementById("amps_box").value;
+	var watts = volts*amps;
+	var hp_electrical = watts/746;
+	
+	document.getElementById("hp_electrical_box").value = hp_electrical.toFixed(2);
+	document.getElementById("watts_electrical_box").value = watts.toFixed(2);
+}
+
+
+function payment_changed(){
+	//var current_id = this.id;
+	var payment = document.getElementById("payment_box").value;
+	var n = document.getElementById("number_monthes_box").value;
+	var r = document.getElementById("annual_rate_box").value/1200;
+	var PV = (payment*(1-Math.pow((1+r),-n)))/r;
+	document.getElementById("amount_box").value = PV.toFixed(2);
+	document.getElementById("totalofpayments").value = (payment*n).toFixed(2);
+	document.getElementById("totalinterest").value = (payment*n-PV).toFixed(2);
+}
+
+
+function togglediv(currentElem){
+	var targetdiv = document.getElementById(currentElem);
+	targetdiv.style.display = targetdiv.style.display == "none" ? "block" : "none";
+}
+
+</script>
+	
+</head>
+
+
+<body>
+
+<div class="center">
+
+<h1>Hydraulic HP Calculator</h1>
+<table class="right">
+	<tr><td>Pressure - psi:</td><td><input type="number" id="pressure_box" /></td></tr>
+	<tr><td>Flow - gpm:</td><td><input type="number" id="flow_box"/></td></tr>
+	<tr><td>Horse Power:</td><td><input type="number" id="hp_hydraulic_box"/></td></tr>
+	<tr><td>Watts:</td><td><input type="number" id="watts_box" readonly="readonly"/></td></tr>
+</table>
+
+<h1>Rotational HP Calculator</h1>
+<table class="right">
+	<tr><td>Torque - in*lbf:</td><td><input type="number" id="torque_box" /></td></tr>
+	<tr><td>RPM:</td><td><input type="number" id="rpm_box"/></td></tr>
+	<tr><td>Horse Power:</td><td><input type="number" id="hp_rotational_box"/></td></tr>
+	<tr><td>Watts:</td><td><input type="number" id="watts_rotational_box" readonly="readonly"/></td></tr>
+</table>
+
+<h1>Mechanical HP Calculator</h1>
+<table class="right">
+	<tr><td>Force - lbf:</td><td><input type="number" id="force_box" /></td></tr>
+	<tr><td>Distance - feet:</td><td><input type="number" id="distance_box"/></td></tr>
+	<tr><td>Seconds:</td><td><input type="number" id="seconds_box"/></td></tr>
+	<tr><td>Horse Power:</td><td><input type="number" id="hp_mechanical_box"/></td></tr>
+	<tr><td>Watts:</td><td><input type="number" id="watts_mechanical_box" readonly="readonly"/></td></tr>
+</table>
+
+<h1>Electrical HP Calculator</h1>
+<table class="right">
+	<tr><td>Volts:</td><td><input type="number" id="volts_box" /></td></tr>
+	<tr><td>Amps:</td><td><input type="number" id="amps_box"/></td></tr>
+	<tr><td>Horse Power:</td><td><input type="number" id="hp_electrical_box"/></td></tr>
+	<tr><td>Watts:</td><td><input type="number" id="watts_electrical_box" readonly="readonly"/></td></tr>
+</table>
+
+	<div style="height:175px"></div>
+</div>
+
+</body>
+</html>

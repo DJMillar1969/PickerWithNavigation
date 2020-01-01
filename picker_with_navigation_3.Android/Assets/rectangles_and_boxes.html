@@ -1,0 +1,137 @@
+﻿<!DOCTYPE HTML>
+
+<html>
+<head>
+	<title>Rectangle and Box Calc's</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+input[readonly="readonly"]
+{
+border:0;
+}
+	   
+div.center
+{
+  width: 95vw;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+    .center {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+.right
+{
+	text-align: right;
+}
+
+.left
+{
+	text-align: left;
+}
+</style>
+
+<script type="text/javascript">
+window.onload = addListeners;
+
+
+function addListeners(){
+	document.getElementById('length_box').addEventListener("keyup",value_changed,false);
+	document.getElementById('width_box').addEventListener("keyup",value_changed,false);
+	document.getElementById('height_box').addEventListener("keyup",value_changed,false);
+}
+
+
+function value_changed(){
+	var length = document.getElementById("length_box").value;
+	var width = document.getElementById("width_box").value;
+	var height = document.getElementById("height_box").value;
+	
+	var rectangle_area = length*width;
+	var rectangle_perimeter = 2*(1*length+1*width);
+	var box_volume = length*width*height;
+	var box_area = 2 * (length * width + length * height + width * height);
+	//alert(rectangle_perimeter);
+	
+	document.getElementById("rectangle_area_box").value = (rectangle_area *1).toFixed(4);
+	document.getElementById("rectangle_perimeter_box").value = (rectangle_perimeter *1).toFixed(4);
+	document.getElementById("box_volume_box").value = (box_volume * 1).toFixed(4);
+	document.getElementById("box_area_box").value = (box_area * 1).toFixed(4);
+	//document.getElementById("box_perimeter_box").value = (box_perimeter * 1).toFixed(4);
+		
+	var units_value = "";
+	var gallons = 0;
+	var liters;
+	if (document.getElementById('unit1').checked) {
+	units_value = document.getElementById('unit1').value;
+	gallons = box_volume * 0.00432900;
+	}
+	if (document.getElementById('unit2').checked) {
+	units_value = document.getElementById('unit2').value;
+	gallons = box_volume * 7.48051948;
+	}
+	if (document.getElementById('unit3').checked) {
+	units_value = document.getElementById('unit3').value;
+	gallons = box_volume * 264.17205236;
+	}
+	
+	var liters = gallons * 3.78541178;
+	var yards = gallons * 0.00495113168724279835390946502058;
+	var gallon_output_text = "Gallons: " + gallons.toFixed(2);
+	var liters_output_text = "Liters: " + liters.toFixed(2);
+	var yards_output_text = "Yards: " + yards.toFixed(2);
+	document.getElementById('gallon_output').innerHTML = gallon_output_text;
+	document.getElementById('liters_output').innerHTML = liters_output_text;
+	document.getElementById('yards_output').innerHTML = yards_output_text;
+}
+
+function togglediv(currentElem){
+	var targetdiv = document.getElementById(currentElem);
+	targetdiv.style.display = targetdiv.style.display == "none" ? "block" : "none";
+}
+
+</script>
+	
+</head>
+
+<body>
+
+<div class="center">
+
+<!--<h2>Rectangle and Box Calc's</h2>-->
+<div id="box" >
+
+<img src="images/BOX.PNG" alt="" border="0" align="left" width="95%"/>
+<table class="right">
+<tr><td>Length:</td><td><input type="number" id="length_box" /></td></tr>
+<tr><td>Width:</td><td><input type="number" id="width_box" /></td></tr>
+<tr><td>Height:</td><td><input type="number" id="height_box"/></td></tr>
+<tr><td>Rectangle Area:</td><td><input type="number" id="rectangle_area_box" readonly="readonly" /></td></tr>
+<tr><td>Rectangle Perimeter:</td><td><input type="number" id="rectangle_perimeter_box" readonly="readonly" /></td></tr>
+<tr><td>Box Volume:</td><td><input type="number" id="box_volume_box" readonly="readonly"/></td></tr>
+<tr><td>Box Area:</td><td><input type="number" id="box_area_box" readonly="readonly"/></td></tr>
+</table>
+
+<div id="units">
+  <br/>
+  <label for=""><strong>Units:</strong></label>
+  <input type="radio" id="unit1" name="unit" value="Inches" onclick="value_changed()"> Inches
+  <input type="radio" id="unit2" name="unit" value="Feet" onclick="value_changed()"> Feet
+  <input type="radio" id="unit3" name="unit" value="Meters" onclick="value_changed()"> Meters  
+ 
+</div>
+ <p id="gallon_output">Gallons:</p>
+ <p id="liters_output">Liters:</p>
+ <p id="yards_output">Yards:</p>
+</div>
+	<div style="height:150px"></div>
+
+</div>
+
+</body>
+</html>

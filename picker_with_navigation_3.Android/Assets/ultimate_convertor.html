@@ -1,0 +1,504 @@
+﻿<!DOCTYPE HTML>
+
+<html>
+<head>
+	<title>Ultimate Converter</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+div.center
+{
+  width: 95vw;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.center
+{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.navarrow {
+	float: right;
+	font-size: .8em;
+}
+
+.unitgroup {
+	margin: 5px;
+	padding: 15px 10px 3px 10px;
+	height: 40px;
+    /*width: 95%;*/
+	background: silver;
+	border: 2px solid black;
+	text-align: left;
+	font-size: 1.5em;
+	font-weight: bold;
+	border-radius: 10px;
+	
+}
+
+tr, input{
+	font-size: 1.1em;
+	
+}
+
+input{
+	width: 170px;
+}
+</style>
+
+
+<script type="text/javascript">
+var units = [
+{box_id:"kW_box",
+ factor:1000,
+ type:"power"},
+{box_id:"hp_box",
+ factor:746,
+ type:"power"},
+{box_id:"watt_box",
+ factor:1,
+ type:"power"},
+{box_id:"metric_hp_box",
+ factor:735.49875,
+ type:"power"},
+{box_id:"degree_box",
+ factor:0.0174532925199433,
+ type:"angle"},
+{box_id:"radian_box",
+ factor:1,
+ type:"angle"},
+{box_id:"gradian_box",
+ factor:0.015707963267949,
+ type:"angle"},
+ {box_id:"bar_box",
+ factor:100000,
+ type:"pressure"},
+ {box_id:"psi_box",
+ factor:6894.75729,
+ type:"pressure"},
+ {box_id:"footwater_box",
+ factor:2989.0668999983,
+ type:"pressure"},
+ {box_id:"atm_box",
+ factor:101325,
+ type:"pressure"},
+ {box_id:"torr_box",
+ factor:133.322368,
+ type:"pressure"},
+  {box_id:"mpa_box",
+ factor:1000000,
+ type:"pressure"},
+ {box_id:"kpa_box",
+ factor:1000,
+ type:"pressure"},
+ {box_id:"inchwater_box",
+ factor:249.088908333192,
+ type:"pressure"},
+ {box_id:"inchmercury_box",
+ factor:3386.38866667183,
+ type:"pressure"},
+ {box_id:"pascal_box",
+ factor:1,
+ type:"pressure"},
+ {box_id:"mmwater_box",
+ factor:9.80664993437764,
+ type:"pressure"},
+ {box_id:"mmmercury_box",
+ factor:133.322388451647,
+ type:"pressure"},
+ {box_id:"drop_box",
+ factor:0.00005,
+ type:"volume"},
+ {box_id:"ml_box",
+ factor:0.001,
+ type:"volume"},
+ {box_id:"tablespoon_box",
+ factor:0.01478676478125,
+ type:"volume"},
+ {box_id:"teaspoon_box",
+ factor:0.00492892159375,
+ type:"volume"},
+ {box_id:"fluid_ounce_box",
+ factor:0.0295735295625,
+ type:"volume"},
+ {box_id:"cup_box",
+ factor:0.2365882365,
+ type:"volume"},
+ {box_id:"pint_box",
+ factor:0.473176473,
+ type:"volume"},
+ {box_id:"quart_box",
+ factor:0.946352946,
+ type:"volume"},
+ {box_id:"us_gallon_box",
+ factor:3.785411784,
+ type:"volume"},
+ {box_id:"barrel_oil_box",
+ factor:158.987294928,
+ type:"volume"},
+ {box_id:"inch_cubed_box",
+ factor:0.016387064,
+ type:"volume"},
+ {box_id:"foot_cubed_box",
+ factor:28.316846592,
+ type:"volume"},
+ {box_id:"acre_foot_box",
+ factor:1233481.83754752,
+ type:"volume"},
+ {box_id:"meter_cubed_box",
+ factor:1000,
+ type:"volume"},
+ {box_id:"yard_cubed_box",
+ factor:764.554857984,
+ type:"volume"},
+ {box_id:"liter_box",
+ factor:1,
+ type:"volume"},
+ {box_id:"mill_box",
+ factor:0.0000254,
+ type:"length"},
+ {box_id:"inch_box",
+ factor:0.0254,
+ type:"length"},
+ {box_id:"foot_box",
+ factor:0.3048,
+ type:"length"},
+ {box_id:"yard_box",
+ factor:0.9144,
+ type:"length"},
+ {box_id:"mile_box",
+ factor:1609.344,
+ type:"length"},
+ {box_id:"rod_box",
+ factor:5.0292,
+ type:"length"},
+ {box_id:"chain_box",
+ factor:20.1168,
+ type:"length"},
+ {box_id:"cubit_box",
+ factor:0.4572,
+ type:"length"},
+ {box_id:"mm_box",
+ factor:0.001,
+ type:"length"},
+ {box_id:"cm_box",
+ factor:0.01,
+ type:"length"},
+ {box_id:"m_box",
+ factor:1,
+ type:"length"},
+ {box_id:"km_box",
+ factor:1000,
+ type:"length"},
+ {box_id:"light_year_box",
+ factor:9460730472580800,
+ type:"length"},
+ {box_id:"acre_box",
+ factor:4046.8564224,
+ type:"area"},
+ {box_id:"in_square_box",
+ factor:0.00064516,
+ type:"area"},
+ {box_id:"ft_square_box",
+ factor:0.09290304,
+ type:"area"},
+ {box_id:"yard_square_box",
+ factor:0.83612736,
+ type:"area"},
+ {box_id:"mile_square_box",
+ factor:2589988.110336,
+ type:"area"},
+ {box_id:"mm_square_box",
+ factor:0.000001,
+ type:"area"},
+ {box_id:"cm_square_box",
+ factor:0.0001,
+ type:"area"},
+ {box_id:"m_square_box",
+ factor:1,
+ type:"area"},
+ {box_id:"km_square_box",
+ factor:1000000,
+ type:"area"},
+ {box_id:"kph_box",
+ factor:0.277777777777778,
+ type:"speed"},
+ {box_id:"mph_box",
+ factor:0.44704,
+ type:"speed"},
+ {box_id:"mps_box",
+ factor:1,
+ type:"speed"},
+ {box_id:"naut_box",
+ factor:0.514444444444444,
+ type:"speed"},
+ {box_id:"troy_ounce_box",
+ factor:0.0311034768,
+ type:"weight"},
+ {box_id:"ounce_box",
+ factor:0.028349523125,
+ type:"weight"},
+ {box_id:"kilogram_box",
+ factor:1,
+ type:"weight"},
+ {box_id:"newton_box",
+ factor:0.101971620999999,
+ type:"weight"},
+ {box_id:"pound_box",
+ factor:0.45359237,
+ type:"weight"},
+ {box_id:"ton_box",
+ factor:907.18474,
+ type:"weight"},
+ {box_id:"gram_box",
+ factor:0.001,
+ type:"weight"},
+ {box_id:"metric_ton_box",
+ factor:1000,
+ type:"weight"},
+ {box_id:"stone_box",
+ factor:6.35029318,
+ type:"weight"}
+];
+
+window.onload = function(){
+	addListeners();
+	}
+
+
+
+
+function addListeners(){
+	document.getElementById('celsius_box').addEventListener("keyup",celsius_changed,false);
+	document.getElementById('fahrenheit_box').addEventListener("keyup",fahrenheit_changed,false);
+	document.getElementById('kelvin_box').addEventListener("keyup",kelvin_changed,false);
+	var x = 0;	
+	units.forEach(function(item){document.getElementById(item.box_id).addEventListener("keyup",value_changed,false)});
+	units.forEach(function(item){document.getElementById(item.box_id).addEventListener('contextmenu', e => e.preventDefault())});
+}
+
+function value_changed(){
+	var current_id = this.id;
+	var current_object = units.filter(function(el){return el.box_id == current_id});
+	var current_factor = current_object[0].factor;
+	var conversion_value = document.getElementById(current_id).value*current_factor;
+	var current_type = current_object[0].type;
+	update_values(current_id,conversion_value,current_type);
+}
+
+function update_values(_current_id,_conversion_value,_current_type){
+	var type_group = units.filter(function(el){return el.type == _current_type});
+	type_group.forEach(function(item){
+			if(item.box_id != _current_id){document.getElementById(item.box_id).value = (_conversion_value/item.factor).toFixed(8)};
+		});	
+}
+
+function celsius_changed(){
+	var celsiusvalue = document.getElementById('celsius_box').value*1;
+	var this_id = this.id;
+	update_temperature_values(celsiusvalue, this_id);
+}
+
+function fahrenheit_changed(){
+	var celsiusvalue = (document.getElementById('fahrenheit_box').value -32)*5/9;
+	var this_id = this.id;
+	update_temperature_values(celsiusvalue, this_id);
+}
+
+function kelvin_changed(){
+	var celsiusvalue = document.getElementById('kelvin_box').value*1-273.15;
+	var this_id = this.id;
+	update_temperature_values(celsiusvalue, this_id);
+}
+
+function update_temperature_values(_celsiusvalue, _this_id){
+	var kelvinvalue = _celsiusvalue + 273.15;
+	var fahrenheitvalue = _celsiusvalue * 9/5 + 32;
+	
+	if(_this_id != 'kelvin_box') document.getElementById('kelvin_box').value = kelvinvalue.toFixed(2);
+	if(_this_id != 'celsius_box') document.getElementById('celsius_box').value = _celsiusvalue.toFixed(2);
+	if(_this_id != 'fahrenheit_box') document.getElementById('fahrenheit_box').value = fahrenheitvalue.toFixed(2);
+}
+
+function togglediv(currentElem){
+	var targetdiv = document.getElementById(currentElem);
+	var tempdiv = currentElem + 'arrow';
+	var arrowdiv = document.getElementById(tempdiv);
+	
+	if(targetdiv.style.display == "none"){
+		targetdiv.style.display = "block";
+		arrowdiv.innerHTML = "&#9650;";
+	} else {
+		targetdiv.style.display = "none";
+		arrowdiv.innerHTML = "&#9660;";
+	}
+}
+
+</script>
+	
+</head>
+
+
+<body>
+
+<div class="center">
+
+<!-- <p id="output">&#9652;&#9662;&#9650;&#9660;</p> -->
+<p id="output2"></p>
+
+<div class="unitgroup" onclick="togglediv('pressure');">Pressure Converter <span id="pressurearrow" class="navarrow">&#9660;</span></div>
+<div id="pressure" style="display:none">
+<table class="center">
+<col width="45%">
+<col width="55%">
+<tr><td>PSI:</td> <td><input type="number" id="psi_box" /></td></tr>
+<tr><td>Bar:</td><td><input type="number" id="bar_box"/></td></tr>
+<tr><td>Pascal:</td> <td> <input type="number" id="pascal_box"/></td></tr>
+<tr><td>KPa:</td> <td> <input type="number" id="kpa_box"/></td></tr>
+<tr><td>MPa:</td> <td> <input type="number" id="mpa_box"/></td></tr>
+<tr><td>Atm:</td> <td> <input type="number" id="atm_box"/></td></tr>
+<tr><td>Torr:</td> <td> <input type="number" id="torr_box"/></td></tr>
+<tr><td>Inches Water:</td> <td> <input type="number" id="inchwater_box"/></td></tr>
+<tr><td>Feet Water:</td> <td> <input type="number" id="footwater_box"/></td></tr>
+<tr><td>Inches Mercury:</td> <td> <input type="number" id="inchmercury_box"/></td></tr>
+<tr><td>mm Water:</td> <td> <input type="number" id="mmwater_box"/></td></tr>
+<tr><td>mm Mercury:</td> <td><input type="number" id="mmmercury_box"/></td></tr>
+</table>
+</div>
+<div class="unitgroup" onclick="togglediv('temperature');">Temperature Converter <span id="temperaturearrow" class="navarrow">&#9660;</span></div>
+<!-- <h2 onclick="togglediv('temperature');">Temperature Converter <span id="temperaturearrow" class="navarrow">&#9660;</span></h2> -->
+<div id="temperature" style="display:none">
+<table class="center">
+<col width="45%">
+<col width="55%">
+<tr><td>Celsius:</td><td><input type="number" id="celsius_box" /></td></tr>
+<tr><td>Fahrenheit:</td><td><input type="number" id="fahrenheit_box"/></td></tr>
+<tr><td>Kelvin:</td><td><input type="number" id="kelvin_box"/></td></tr>
+</table>
+</div>
+
+<div class="unitgroup" onclick="togglediv('volume');">Volume Converter <span id="volumearrow" class="navarrow">&#9660;</span></div>
+<div id="volume" style="display:none">
+<table class="center">
+<col width="45%">
+<col width="55%">
+<tr><td>Drop:</td><td><input type="number" id="drop_box" /></td></tr>
+<tr><td>Teaspoon:</td><td><input type="number" id="teaspoon_box"/></td></tr>
+<tr><td>Tablespoon:</td><td><input type="number" id="tablespoon_box"/></td></tr>
+<tr><td>Fluid Ounce:</td><td><input type="number" id="fluid_ounce_box"/></td></tr>
+<tr><td>Cup:</td><td><input type="number" id="cup_box"/></td></tr>
+<tr><td>Pint:</td><td><input type="number" id="pint_box"/></td></tr>
+<tr><td>Quart:</td><td><input type="number" id="quart_box"/></td></tr>
+<tr><td>US Gallon:</td><td><input type="number" id="us_gallon_box"/></td></tr>
+<tr><td>Barrel (oil):</td><td><input type="number" id="barrel_oil_box"/></td></tr>
+<tr><td>Inch^3:</td><td><input type="number" id="inch_cubed_box"/></td></tr>
+<tr><td>Foot^3:</td><td><input type="number" id="foot_cubed_box"/></td></tr>
+<tr><td>Yard^3:</td><td><input type="number" id="yard_cubed_box"/></td></tr>
+<tr><td>Acre Foot:</td><td><input type="number" id="acre_foot_box"/></td></tr>
+<tr><td>mL:</td><td><input type="number" id="ml_box"/></td></tr>
+<tr><td>Liter:</td><td><input type="number" id="liter_box"/></td></tr>
+<tr><td>M^3:</td><td><input type="number" id="meter_cubed_box"/></td></tr>
+</table>
+</div>
+
+<div class="unitgroup" onclick="togglediv('length');">Length Converter <span id="lengtharrow" class="navarrow">&#9660;</span></div>
+<div id="length" style="display:none">
+<table class="center">
+<col width="45%">
+<col width="55%">
+<tr><td>Mill:</td><td><input type="number" id="mill_box" /></td></tr>
+<tr><td>Inch:</td><td><input type="number" id="inch_box" /></td></tr>
+<tr><td>Foot:</td><td><input type="number" id="foot_box" /></td></tr>
+<tr><td>Yard:</td><td><input type="number" id="yard_box" /></td></tr>
+<tr><td>Mile:</td><td><input type="number" id="mile_box" /></td></tr>
+<tr><td>Rod:</td><td><input type="number" id="rod_box" /></td></tr>
+<tr><td>Chain:</td><td><input type="number" id="chain_box" /></td></tr>
+<tr><td>Cubit:</td><td><input type="number" id="cubit_box" /></td></tr>
+<tr><td>mm:</td><td><input type="number" id="mm_box" /></td></tr>
+<tr><td>cm:</td><td><input type="number" id="cm_box" /></td></tr>
+<tr><td>M:</td><td><input type="number" id="m_box" /></td></tr>
+<tr><td>kM:</td><td><input type="number" id="km_box" /></td></tr>
+<tr><td>Light Year:</td><td><input type="number" id="light_year_box" /></td></tr>
+</table>
+</div>
+
+<div class="unitgroup" onclick="togglediv('area');">Area Converter <span id="areaarrow" class="navarrow">&#9660;</span></div>
+<div id="area" style="display:none">
+<table class="center">
+<col width="45%">
+<col width="55%">
+<tr><td>Acre:</td><td><input type="number" id="acre_box" /></td></tr>
+<tr><td>IN^2:</td><td><input type="number" id="in_square_box" /></td></tr>
+<tr><td>FT^2:</td><td><input type="number" id="ft_square_box" /></td></tr>
+<tr><td>Yard^2:</td><td><input type="number" id="yard_square_box" /></td></tr>
+<tr><td>Mile^2:</td><td><input type="number" id="mile_square_box" /></td></tr>
+<tr><td>mm^2:</td><td><input type="number" id="mm_square_box" /></td></tr>
+<tr><td>cm^2:</td><td><input type="number" id="cm_square_box" /></td></tr>
+<tr><td>m^2:</td><td><input type="number" id="m_square_box" /></td></tr>
+<tr><td>km^2:</td><td><input type="number" id="km_square_box" /></td></tr>
+</table>
+</div>
+
+<div class="unitgroup" onclick="togglediv('speed');">Speed Converter <span id="speedarrow" class="navarrow">&#9660;</span></div>
+<div id="speed" style="display:none">
+<table class="center">
+<col width="45%">
+<col width="55%">
+<tr><td>MPH:</td><td><input type="number" id="mph_box" /></td></tr>
+<tr><td>kPH:</td><td><input type="number" id="kph_box" /></td></tr>
+<tr><td>m/s:</td><td><input type="number" id="mps_box" /></td></tr>
+<tr><td>Nauts:</td><td><input type="number" id="naut_box" /></td></tr>
+</table>
+</div>
+
+<div class="unitgroup" onclick="togglediv('weight');">Weight Converter <span id="weightarrow" class="navarrow">&#9660;</span></div>
+<div id="weight" style="display:none">
+<table class="center">
+<col width="45%">
+<col width="55%">
+<tr><td>Ounces:</td><td><input type="number" id="ounce_box" /></td></tr>
+<tr><td>Troy Ounces:</td><td><input type="number" id="troy_ounce_box" /></td></tr>
+<tr><td>Pounds:</td><td><input type="number" id="pound_box" /></td></tr>
+<tr><td>Tons:</td><td><input type="number" id="ton_box" /></td></tr>
+<tr><td>Grams:</td><td><input type="number" id="gram_box" /></td></tr>
+<tr><td>Kilograms:</td><td><input type="number" id="kilogram_box" /></td></tr>
+<tr><td>Newtons:</td><td><input type="number" id="newton_box" /></td></tr>
+<tr><td>Metric Tons:</td><td><input type="number" id="metric_ton_box" /></td></tr>
+<tr><td>Stones:</td><td><input type="number" id="stone_box" /></td></tr>
+</table>
+</div>
+
+<div class="unitgroup" onclick="togglediv('power');" class="center">Power Converter <span id="powerarrow" class="navarrow">&#9660;</span></div>
+<div id="power" style="display:none">
+<table class="center">
+<col width="45%">
+<col width="55%">
+<tr><td>kW:</td><td><input type="number" id="kW_box" /></td></tr>
+<tr><td>hp:</td><td><input type="number" id="hp_box" /></td></tr>
+<tr><td>W:</td><td><input type="number" id="watt_box" /></td></tr>
+<tr><td>Metric hp:</td><td><input type="number" id="metric_hp_box" /></td></tr>
+</table>
+</div>
+
+
+<div class="unitgroup" onclick="togglediv('angle');">Angle Converter <span id="anglearrow" class="navarrow">&#9660;</span></div>
+<div id="angle" style="display:none">
+<table class="center">
+<col width="45%">
+<col width="55%">
+<tr><td>Degrees:</td><td><input type="number" id="degree_box" /></td></tr>
+<tr><td>Radians:</td><td><input type="number" id="radian_box" /></td></tr>
+<tr><td>Gradians:</td><td><input type="number" id="gradian_box" /></td></tr>
+</table>
+
+</div>
+<div style="height:200px"></div>
+
+</div>
+
+</body>
+</html>

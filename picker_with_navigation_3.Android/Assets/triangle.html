@@ -1,0 +1,269 @@
+﻿
+<!DOCTYPE HTML>
+
+<html>
+<head>
+	<title>Right Triangle Calculator</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+p  {
+    font-family: arial;
+    font-size: 120%;
+}
+div.center
+{
+  width: 95vw;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.center
+{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+</style>
+
+<script type="text/javascript">
+window.onload = addListeners;
+
+var inputlist;
+
+function addListeners(){
+	document.getElementById('A_box').addEventListener("keyup",value_changed,false);
+	document.getElementById('B_box').addEventListener("keyup",value_changed,false);
+	document.getElementById('C_box').addEventListener("keyup",value_changed,false);
+	document.getElementById('a_box').addEventListener("keyup",value_changed,false);
+	document.getElementById('b_box').addEventListener("keyup",value_changed,false);
+	document.getElementById('A_box').addEventListener("change",value_changed,false);
+	document.getElementById('B_box').addEventListener("change",value_changed,false);
+	document.getElementById('C_box').addEventListener("change",value_changed,false);
+	document.getElementById('a_box').addEventListener("change",value_changed,false);
+	document.getElementById('b_box').addEventListener("change",value_changed,false);
+}
+
+
+function value_changed(){
+	document.getElementById("area_box").value = "";
+	document.getElementById("perimeter_box").value = "";
+	document.getElementById("instructions").innerHTML = "Enter any 2 variables<br /> the others will be calculated";
+	document.getElementById("instructions").style.color = "black";
+	
+	inputlist = "";
+	if (document.getElementById("A_box").value != ""){inputlist += "A"};
+	if (document.getElementById("B_box").value != ""){inputlist += "B"};
+	if (document.getElementById("C_box").value != ""){inputlist += "C"};
+	if (document.getElementById("a_box").value != ""){inputlist += "a"};
+	if (document.getElementById("b_box").value != ""){inputlist += "b"};
+
+	if(inputlist.length == 2){
+		document.getElementById("calculate_button").disabled=false;
+		}else{
+		document.getElementById("calculate_button").disabled=true;
+		}
+	
+	if(inputlist.length > 2){
+		document.getElementById("instructions").innerHTML = "Please enter only 2 variables<br />and then click 'Calculate'";
+		document.getElementById("instructions").style.color = "red";
+		}
+}
+
+
+function calculatevalues(){
+	switch(inputlist){
+	case "AB":
+
+		var A = document.getElementById("A_box").value;
+		var B = document.getElementById("B_box").value;
+		var C = Math.sqrt(Math.pow(A,2)+Math.pow(B,2));		
+		var a = Math.atan(A/B)*180/Math.PI;
+		var b = Math.atan(B/A)*180/Math.PI;
+		
+		document.getElementById("C_box").value = C; 
+		document.getElementById("a_box").value = a; 
+		document.getElementById("b_box").value = b; 
+		
+		area_perimeter(A,B,C);
+		break;
+
+	case "AC":
+		var A = document.getElementById("A_box").value;
+		var C = document.getElementById("C_box").value;
+		var B = Math.sqrt(Math.pow(C,2)-Math.pow(A,2));
+		var a = Math.atan(A/B)*180/Math.PI;
+		var b = Math.atan(B/A)*180/Math.PI;
+
+		document.getElementById("B_box").value = B;
+		document.getElementById("a_box").value = a; 
+		document.getElementById("b_box").value = b; 
+		
+		area_perimeter(A,B,C);
+		break;
+	
+	case "BC":
+		var B = document.getElementById("B_box").value;
+		var C = document.getElementById("C_box").value;
+		var A = Math.sqrt(Math.pow(C,2)-Math.pow(B,2));
+		var a = Math.atan(A/B)*180/Math.PI;
+		var b = Math.atan(B/A)*180/Math.PI;
+
+		document.getElementById("A_box").value = A;
+		document.getElementById("a_box").value = a; 
+		document.getElementById("b_box").value = b; 
+		
+		area_perimeter(A,B,C);
+		break;
+
+	case "Aa":
+		var A = document.getElementById("A_box").value;
+		var a = document.getElementById("a_box").value;
+		var b = 90-a;
+		var B = A*Math.tan(b*Math.PI/180);
+		var C = Math.sqrt(Math.pow(A,2)+Math.pow(B,2));	
+
+
+		document.getElementById("B_box").value = B;
+		document.getElementById("b_box").value = b; 
+		document.getElementById("C_box").value = C; 
+		
+		area_perimeter(A,B,C);
+		break;
+
+	case "Ab":
+		var A = document.getElementById("A_box").value;
+		var b = document.getElementById("b_box").value;
+		var a = 90-b;
+		var B = A*Math.tan(b*Math.PI/180);
+		var C = Math.sqrt(Math.pow(A,2)+Math.pow(B,2));	
+
+
+		document.getElementById("B_box").value = B;
+		document.getElementById("a_box").value = a; 
+		document.getElementById("C_box").value = C; 
+		
+		area_perimeter(A,B,C);
+		break;
+
+	case "Ba":
+		var B = document.getElementById("B_box").value;
+		var a = document.getElementById("a_box").value;
+		var b = 90-a;
+		var A = B*Math.tan(b*Math.PI/180);
+		var C = Math.sqrt(Math.pow(A,2)+Math.pow(B,2));	
+
+
+		document.getElementById("A_box").value = A;
+		document.getElementById("b_box").value = b; 
+		document.getElementById("C_box").value = C; 
+		
+		area_perimeter(A,B,C);
+		break;
+
+	case "Bb":
+		var B = document.getElementById("B_box").value;
+		var b = document.getElementById("b_box").value;
+		var a = 90-b;
+		var A = B*Math.tan(b*Math.PI/180);
+		var C = Math.sqrt(Math.pow(A,2)+Math.pow(B,2));	
+
+
+		document.getElementById("A_box").value = A;
+		document.getElementById("a_box").value = a; 
+		document.getElementById("C_box").value = C; 
+		
+		area_perimeter(A,B,C);
+		break;
+
+	case "Ca":
+		var C = document.getElementById("C_box").value;
+		var a = document.getElementById("a_box").value;
+		var b = 90-a;
+		var A = C*Math.cos(b*Math.PI/180);
+		var B = Math.sqrt(Math.pow(C,2)-Math.pow(A,2));	
+
+
+		document.getElementById("A_box").value = A;
+		document.getElementById("B_box").value = B; 
+		document.getElementById("b_box").value = b; 
+		
+		area_perimeter(A,B,C);
+		break;
+
+	case "Cb":
+		var C = document.getElementById("C_box").value;
+		var b = document.getElementById("b_box").value;
+		var a = 90-b;
+		var A = C*Math.cos(b*Math.PI/180);
+		var B = Math.sqrt(Math.pow(C,2)-Math.pow(A,2));	
+
+
+		document.getElementById("A_box").value = A;
+		document.getElementById("a_box").value = a; 
+		document.getElementById("B_box").value = B; 
+		
+		area_perimeter(A,B,C);
+		break;
+
+	default:
+
+	}
+
+}
+
+function area_perimeter(A,B,C){
+	var area = A*B/2;
+	var perimeter = 1*A+1*B+1*C;
+	
+	document.getElementById("area_box").value = area;
+	document.getElementById("perimeter_box").value = perimeter;
+		//alert(area + " " + perimeter);
+}
+
+function togglediv(currentElem){
+	var targetdiv = document.getElementById(currentElem);
+	targetdiv.style.display = targetdiv.style.display == "none" ? "block" : "none";
+}
+
+function clear_box(id){
+	document.getElementById(id).value = "";
+	value_changed();
+}
+
+</script>
+	
+</head>
+
+
+<body>
+
+
+
+<div class="center">
+<img src="images\right_triangle.png" width="300" >
+
+
+
+<h2 class="center">Right Triangle Calculator</h2>
+<p id="instructions" Style="color:black;" class="center">Enter any 2 variables<br />the others will be calculated</p>
+
+<div id="righttriangle" >
+<table class="center">
+<tr><td>Side A:</td><td><input type="number" id="A_box" /><button onclick=(clear_box("A_box"))>X</button></td></tr>
+<tr><td>Side B:</td><td><input type="number" id="B_box"/><button onclick=(clear_box("B_box"))>X</button></td></tr>
+<tr><td>Side C:</td><td><input type="number" id="C_box"/><button onclick=(clear_box("C_box"))>X</button></td></tr>
+<tr><td>Angle a:</td><td><input type="number" id="a_box"/><button onclick=(clear_box("a_box"))>X</button></td></tr>
+<tr><td>Angle b:</td><td><input type="number" id="b_box"/><button onclick=(clear_box("b_box"))>X</button></td></tr>
+<tr><td>Area:</td><td><input type="number" id="area_box" disabled="true"/></td></tr>
+<tr><td>Perimeter:</td><td><input type="number" id="perimeter_box" disabled="true"/></td></tr>
+<tr><td></td><td><input type="button" value="Calculate" id="calculate_button" onClick="calculatevalues()" disabled="true"/></td></tr>
+</table>
+</div>
+
+
+</div>
+
+</body>
+</html>

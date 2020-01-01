@@ -1,0 +1,323 @@
+﻿
+<!DOCTYPE HTML>
+
+<html>
+<head>
+	<title>Triangle Calculator</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+p  {
+    font-family: arial;
+    font-size: 120%;
+}
+div.center
+{
+  width: 95vw;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.center
+{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+</style>
+
+<script type="text/javascript">
+window.onload = addListeners;
+
+var inputlist;
+
+function addListeners(){
+	document.getElementById('A_box').addEventListener("keyup",value_changed,false);
+	document.getElementById('B_box').addEventListener("keyup",value_changed,false);
+	document.getElementById('C_box').addEventListener("keyup",value_changed,false);
+	document.getElementById('a_box').addEventListener("keyup",value_changed,false);
+	document.getElementById('b_box').addEventListener("keyup",value_changed,false);
+	document.getElementById('c_box').addEventListener("keyup",value_changed,false);
+	document.getElementById('A_box').addEventListener("change",value_changed,false);
+	document.getElementById('B_box').addEventListener("change",value_changed,false);
+	document.getElementById('C_box').addEventListener("change",value_changed,false);
+	document.getElementById('a_box').addEventListener("change",value_changed,false);
+	document.getElementById('b_box').addEventListener("change",value_changed,false);
+	document.getElementById('c_box').addEventListener("change",value_changed,false);
+}
+
+
+function value_changed(){
+	document.getElementById("area_box").value = "";
+	document.getElementById("perimeter_box").value = "";
+	document.getElementById("instructions").innerHTML = "Enter any 3 variables<br /> the others will be calculated";
+	document.getElementById("instructions").style.color = "black";
+
+	inputlist = "";
+	if (document.getElementById("A_box").value != ""){inputlist += "A"};
+	if (document.getElementById("B_box").value != ""){inputlist += "B"};
+	if (document.getElementById("C_box").value != ""){inputlist += "C"};
+	if (document.getElementById("a_box").value != ""){inputlist += "a"};
+	if (document.getElementById("b_box").value != ""){inputlist += "b"};
+	if (document.getElementById("c_box").value != ""){inputlist += "c"};
+
+	if(inputlist.length == 3){
+		document.getElementById("calculate_button").disabled=false;
+		}else{
+		document.getElementById("calculate_button").disabled=true;
+		}
+	
+	
+	if(inputlist.length > 3){
+		document.getElementById("instructions").innerHTML = "Please enter only 3 variables<br />and then click 'Calculate'";
+		document.getElementById("instructions").style.color = "red";
+		}
+	
+}
+
+
+function calculatevalues(){
+	switch(inputlist){
+	case "ABC":
+		var A = document.getElementById("A_box").value;
+		var B = document.getElementById("B_box").value;
+		var C = document.getElementById("C_box").value;
+		
+		var c = rtd(Math.acos((Math.pow(A,2)+Math.pow(B,2)-Math.pow(C,2))/(2*A*B)));		
+		var b = rtd(Math.asin(B*Math.sin(dtr(c))/C));
+		var a = 180-c-b;
+		
+				
+		document.getElementById("a_box").value = a; 
+		document.getElementById("b_box").value = b; 
+		document.getElementById("c_box").value = c; 
+		
+		area_perimeter(A,B,C,b);
+				
+		break;
+
+	case "ABa":
+		var A = document.getElementById("A_box").value;
+		var B = document.getElementById("B_box").value;
+		var a = document.getElementById("a_box").value;
+
+		var b = rtd(Math.asin(B*Math.sin(dtr(a))/A)); 	
+		var c = 180-a-b;
+		var C = A*Math.sin(dtr(c))/Math.sin(dtr(a));
+
+		document.getElementById("C_box").value = C;
+		document.getElementById("b_box").value = b; 
+		document.getElementById("c_box").value = c; 
+
+		area_perimeter(A,B,C,b);		
+
+		break;
+	
+	case "ABb":
+		var A = document.getElementById("A_box").value;
+		var B = document.getElementById("B_box").value;
+		var b = document.getElementById("b_box").value;
+
+		var a = rtd(Math.asin(A*Math.sin(dtr(b))/B));
+		var c = 180-a-b;
+		var C = A*Math.sin(dtr(c))/Math.sin(dtr(a));
+
+		document.getElementById("a_box").value = a;
+		document.getElementById("c_box").value = c; 
+		document.getElementById("C_box").value = C; 
+		
+		area_perimeter(A,B,C,b);
+
+		break;
+
+	case "ABc":
+		var A = document.getElementById("A_box").value;
+		var B = document.getElementById("B_box").value;
+		var c = document.getElementById("c_box").value;
+		
+		var C = Math.sqrt(Math.pow(A,2)+Math.pow(B,2)-(2*A*B*Math.cos(dtr(c))));
+		var a = rtd(Math.asin(A*Math.sin(dtr(c))/C));
+		var b = 180-a-c;
+
+		document.getElementById("a_box").value = a;
+		document.getElementById("b_box").value = b; 
+		document.getElementById("C_box").value = C; 
+		
+		area_perimeter(A,B,C,b);
+
+		break;
+
+	case "BCa":
+		var B = document.getElementById("B_box").value;
+		var C = document.getElementById("C_box").value;
+		var a = document.getElementById("a_box").value;
+		
+		var A = Math.sqrt(Math.pow(B,2)+Math.pow(C,2)-(2*B*C*Math.cos(dtr(a))));
+		var b = rtd(Math.asin(B*Math.sin(dtr(a))/A));
+		var c = 180-a-b;
+
+		document.getElementById("A_box").value = A;
+		document.getElementById("b_box").value = b; 
+		document.getElementById("c_box").value = c; 
+		
+		area_perimeter(A,B,C,b);
+
+		break;
+
+	case "BCb":
+		var B = document.getElementById("B_box").value;
+		var C = document.getElementById("C_box").value;
+		var b = document.getElementById("b_box").value;
+
+		var c = rtd(Math.asin(C*Math.sin(dtr(b))/B));
+		var a = 180-b-c;
+		var A = B*Math.sin(dtr(a))/Math.sin(dtr(b));
+				
+		document.getElementById("c_box").value = c;
+		document.getElementById("a_box").value = a; 
+		document.getElementById("A_box").value = A; 
+		
+		area_perimeter(A,B,C,b);
+
+		break;
+
+	case "BCc":
+		var B = document.getElementById("B_box").value;
+		var C = document.getElementById("C_box").value;
+		var c = document.getElementById("c_box").value;
+		
+		var b = rtd(Math.asin(B*Math.sin(dtr(c))/C));
+		var a = 180-b-c;
+		var A = B*Math.sin(dtr(a))/Math.sin(dtr(b));
+				
+		document.getElementById("b_box").value = b;
+		document.getElementById("a_box").value = a; 
+		document.getElementById("A_box").value = A; 
+		
+		area_perimeter(A,B,C,b);
+
+		break;
+
+	case "Cab":
+		var C = document.getElementById("C_box").value;
+		var a = document.getElementById("a_box").value;
+		var b = document.getElementById("b_box").value;
+
+		var c =	180-a-b;
+		var A = C*Math.sin(dtr(a))/Math.sin(dtr(c));
+		var B = C*Math.sin(dtr(b))/Math.sin(dtr(c));
+		
+		document.getElementById("A_box").value = A;
+		document.getElementById("B_box").value = B; 
+		document.getElementById("c_box").value = c; 
+		
+		area_perimeter(A,B,C,b);
+
+		break;
+
+	case "Cac":
+		var C = document.getElementById("C_box").value;
+		var a = document.getElementById("a_box").value;
+		var c = document.getElementById("c_box").value;
+
+		var b = 180-a-c;
+		var A = C*Math.sin(dtr(a))/Math.sin(dtr(c));
+		var B = C*Math.sin(dtr(b))/Math.sin(dtr(c));
+
+
+		document.getElementById("b_box").value = b;
+		document.getElementById("A_box").value = A; 
+		document.getElementById("B_box").value = B; 
+		
+		area_perimeter(A,B,C,b);
+
+		break;
+	
+	case "Cbc":
+		var C = document.getElementById("C_box").value;
+		var b = document.getElementById("b_box").value;
+		var c = document.getElementById("c_box").value;
+
+		var a = 180-b-c;
+		var A = C*Math.sin(dtr(a))/Math.sin(dtr(c));
+		var B = C*Math.sin(dtr(b))/Math.sin(dtr(c));
+
+
+		document.getElementById("a_box").value = a;
+		document.getElementById("A_box").value = A; 
+		document.getElementById("B_box").value = B; 
+		
+		area_perimeter(A,B,C,b);
+
+		break;
+
+	default:
+
+	}
+
+}
+
+function area_perimeter(A,B,C,b){
+	var area = C*A*Math.sin(dtr(b))/2;
+	var perimeter = 1*A+1*B+1*C;
+	
+	document.getElementById("area_box").value = area;
+	document.getElementById("perimeter_box").value = perimeter;
+		//alert(area + " " + perimeter);
+		
+}
+
+function dtr(deg){
+	return deg*Math.PI/180;
+}
+
+function rtd(rad){
+	return rad*180/Math.PI;
+}
+
+
+function togglediv(currentElem){
+	var targetdiv = document.getElementById(currentElem);
+	targetdiv.style.display = targetdiv.style.display == "none" ? "block" : "none";
+}
+
+function clear_box(id){
+	document.getElementById(id).value = "";
+	value_changed();
+}
+
+</script>
+	
+</head>
+
+
+<body>
+
+
+
+<div class="center">
+<img src="images\triangle.png" width="300">
+
+
+<h2 class="center">Triangle Calculator</h2>
+<p class="center" id="instructions">Enter any 3 variables<br /> the others will be calculated</p>
+<div id="righttriangle" >
+<table class="center">
+<tr><td>Side A:</td><td><input type="number" id="A_box" /><button onclick=(clear_box("A_box"))>X</button></td></tr>
+<tr><td>Side B:</td><td><input type="number" id="B_box"/><button onclick=(clear_box("B_box"))>X</button></td></tr>
+<tr><td>Side C:</td><td><input type="number" id="C_box"/><button onclick=(clear_box("C_box"))>X</button></td></tr>
+<tr><td>Angle a:</td><td><input type="number" id="a_box"/><button onclick=(clear_box("a_box"))>X</button></td></tr>
+<tr><td>Angle b:</td><td><input type="number" id="b_box"/><button onclick=(clear_box("b_box"))>X</button></td></tr>
+<tr><td>Angle c:</td><td><input type="number" id="c_box"/><button onclick=(clear_box("c_box"))>X</button></td></tr>
+<tr><td>Area:</td><td><input type="number" id="area_box" disabled="true"/></td></tr>
+<tr><td>Perimeter:</td><td><input type="number" id="perimeter_box" disabled="true"/></td></tr>
+<tr><td></td><td><input type="button" value="Calculate" id="calculate_button" onClick="calculatevalues()" disabled="true"/></td></tr>
+</table>
+</div>
+
+
+</div>
+
+</body>
+</html>
