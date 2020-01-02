@@ -18,6 +18,7 @@
                         <Label 
                            Text="{Binding Title}"
                            FontAttributes="Bold" 
+                            FontSize="20"
                            />
                 </ViewCell>
             </DataTemplate>
