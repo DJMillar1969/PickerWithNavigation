@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="UltimateConvertor.MainPage"
-             xmlns:ads="clr-namespace:UltimateConvertor;assembly=UltimateConvertor"
+             xmlns:ads="clr-namespace:UltimateConvertor.Controls;assembly=UltimateConvertor"
             >
 
     <ContentPage.ToolbarItems >
@@ -14,9 +14,9 @@
 
     </ContentPage.ToolbarItems>
 
-   
-    <!--<ads:AdControlView x:Name="AdBox" BackgroundColor="#FF2296F3"></ads:AdControlView>-->
-    
-    <BoxView HeightRequest="60" x:Name="AdBox" BackgroundColor="#FF2296F3" VerticalOptions="End"/>
+
+    <ads:AdControlView x:Name="AdBox" BackgroundColor="#FF2296F3" HeightRequest="50" VerticalOptions="End"/>
+
+    <!--<BoxView HeightRequest="60" x:Name="AdBox" BackgroundColor="#FF2296F3" VerticalOptions="End"/>-->
 
 </ContentPage>
