@@ -7,51 +7,28 @@ namespace UltimateConvertor
 {
 	public partial class NavPage : ContentPage
 	{
-
-
-		public IList<WebPage> WebPages { get; private set; }
+   		public IList<WebPage> WebPages { get; private set; }
 		public NavPage()
 		{
 			InitializeComponent();
-			Title = "Bonus Calculators";
+			//Title = "Bonus Calculators";
+			
 
 			WebPages = new List<WebPage>();
 
 			WebPages.Add(new WebPage { Name = "loan.html", Title = "Loan Calculator" });
-			WebPages.Add(new WebPage { Name = "water_flow_calcs.html", Title = "Water Flow Calc's" });
-			WebPages.Add(new WebPage { Name = "hp_calcs.html", Title = "Horsepower Calc's" });
-			WebPages.Add(new WebPage { Name = "rectangles_and_boxes.html", Title = "Rectangle and Box Calc's" });
-			WebPages.Add(new WebPage { Name = "circles_and_cylinders.html", Title = "Circle and Cylinder Calc's" });
-			WebPages.Add(new WebPage { Name = "thermal_expansion_calculator.html", Title = "Thermal Expansion Calc's" });
+			WebPages.Add(new WebPage { Name = "water_flow_calcs.html", Title = "Water Flow Calculator" });
+			WebPages.Add(new WebPage { Name = "hp_calcs.html", Title = "Horsepower Calculator" });
+			WebPages.Add(new WebPage { Name = "rectangles_and_boxes.html", Title = "Rectangle and Box Calculator" });
+			WebPages.Add(new WebPage { Name = "circles_and_cylinders.html", Title = "Circle and Cylinder Calculator" });
+			WebPages.Add(new WebPage { Name = "thermal_expansion_calculator.html", Title = "Thermal Expansion Calculator" });
 			WebPages.Add(new WebPage { Name = "triangle.html", Title = "Right Triangle Calculator" });
 			WebPages.Add(new WebPage { Name = "triangle2.html", Title = "Triangle Calculator" });
-			
-			Button button = new Button
-			{
-				Text = "About",
-				VerticalOptions = LayoutOptions.Center,
-				HorizontalOptions = LayoutOptions.Center
-			};
-			button.Clicked += async (sender, args) => await Navigation.PushAsync(new About());
-
-			BoxView adBox = new BoxView
-			{
-				BackgroundColor = Color.FromHex("FF2296F3"),
-				HeightRequest = 60,
-				VerticalOptions = LayoutOptions.EndAndExpand
-			};
 
 			
-
-			var layout = new StackLayout();
-			layout.Children.Add(listStack);
-			layout.Children.Add(button);
-			layout.Children.Add(adBox);
-			//layout.Padding = new Thickness(20, 20, 20, 0);
-			Content = layout;
-
 			BindingContext = this;
 		}
+
 
 		private void OnListViewItemTapped(object sender, SelectedItemChangedEventArgs e)
 		{
@@ -65,12 +42,18 @@ namespace UltimateConvertor
 			Navigation.PushAsync(page);
 		}
 
+
 		protected override void OnAppearing()
 		{
 			base.OnAppearing();
 			listView.SelectedItem = null;
 		}
 
+
+		private void Button_Clicked(object sender, EventArgs e)
+		{
+			Navigation.PushAsync(new About());
+		}
 	}
 }
 

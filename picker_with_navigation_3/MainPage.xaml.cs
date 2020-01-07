@@ -5,42 +5,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-//using Xam.FormsPlugin.Abstractions;
-
+            
 
 namespace UltimateConvertor
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
         public MainPage()
         {
             InitializeComponent();
-                var browser = new WebView();
+               
                 var htmlSource = new HtmlWebViewSource();
-                var _fileName = "ultimate_convertor.html";
-                this.Title = "Ultimate Convertor";
+                var _fileName = "ultimate_converter.html";
+                
                 htmlSource.Html = @"<html><body>
-                                <iframe src='" + _fileName + @"' frameborder='0' width='100%' height='100%'/>
-                                </body>
-                                </html>";
-                browser.Source = htmlSource;
-            browser.VerticalOptions = LayoutOptions.FillAndExpand;
-            browser.HorizontalOptions = LayoutOptions.FillAndExpand;
-           
-           
-                    
-            var layout = new StackLayout();
-            layout.Children.Add(browser);
-            layout.Children.Add(AdBox);
+                                    <iframe src='" + _fileName + @"' frameborder='0' width='100%' height='100%' />
+                                    </body></html>";
             
-            Content = layout;
-            
-             
-            //DisplayAlert("Alert", (string)Color.Blue.ToHex(), "OK");
-         }
+            browser.Source = htmlSource;
+        }
 
     private void MenuItem1_Activated(object sender, EventArgs e)
         {

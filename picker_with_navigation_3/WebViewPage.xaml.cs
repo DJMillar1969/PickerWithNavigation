@@ -28,17 +28,10 @@ namespace UltimateConvertor
             browser.VerticalOptions = LayoutOptions.FillAndExpand;
             browser.HorizontalOptions = LayoutOptions.FillAndExpand;
 
-            BoxView adBox = new BoxView
-            {
-                BackgroundColor = Color.FromHex("FF2296F3"),
-                HeightRequest = 60,
-                VerticalOptions = LayoutOptions.End
-            };
-
-
+          
             var layout = new StackLayout();
             layout.Children.Add(browser);
-            layout.Children.Add(adBox);
+            layout.Children.Add(AdBox);
             
             
             

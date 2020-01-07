@@ -19,6 +19,13 @@ div.center
   margin-right: auto;
 }
 
+table.center
+{
+	width:305px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .center
 {
 	margin-left: auto;
@@ -26,15 +33,13 @@ div.center
 	text-align: center;
 }
 
-.right
-{
-	text-align: right;
-}
+    .right {
+        text-align: right;
+    }
 
-.left
-{
-	text-align: left;
-}
+    .left {
+        text-align: left;
+    }
 </style>
 
 <script type="text/javascript">
@@ -99,20 +104,22 @@ function togglediv(currentElem){
 <div id="water_flow" >
 
 
-<table class="center">
-<tr><td>GPM:</td><td><input type="number" id="gpm_box"/></td></tr>
-<tr><td>PSI:</td><td><input type="number" id="psi_box"/></td></tr>
-<tr><td>Pipe ID - inches:</td><td><input type="number" id="pipe_id_box"/></td></tr>
-<tr><td>Length of pipe - feet:</td><td><input type="number" id="length_of_pipe_box"/></td></tr>
-<tr><td>Velocity - ft/sec:</td><td><input type="number" id="velocity_feet_per_second_box" readonly="readonly" />
-<tr><td>Velocity - ft/min:</td><td><input type="number" id="velocity_feet_per_minute_box" readonly="readonly" />
-<tr><td>Pressure drop - psi:</td><td><input type="number" id="pressure_drop_box" readonly="readonly" />
-<tr><td>HP:</td><td><input type="number" id="hp_box" readonly="readonly" />
+	<table class="center">
+		<colgroup>
+			<col style="width:50%" />
+			<col style="width:50%" />
+		</colgroup>
+		<tr><td class="right" style="width:175px">GPM:</td>						<td style="width:130px"><input type="number" id="gpm_box" style="width:130px"/></td></tr>
+		<tr><td class="right" style="width:175px">PSI:</td>						<td style="width:130px"><input type="number" id="psi_box" style="width:130px"/></td></tr>
+		<tr><td class="right" style="width:175px">Pipe ID - inches:</td>		<td style="width:130px"><input type="number" id="pipe_id_box" style="width:130px"/></td></tr>
+		<tr><td class="right" style="width:175px">Length of pipe - feet:</td>	<td style="width:130px"><input type="number" id="length_of_pipe_box" style="width:130px"/></td></tr>
+		<tr><td class="right" style="width:175px">Velocity - ft/sec:</td>		<td style="width:130px"><input type="number" id="velocity_feet_per_second_box" readonly="readonly" style="width:130px"/>
+		<tr><td class="right" style="width:175px">Velocity - ft/min:</td>		<td style="width:130px"><input type="number" id="velocity_feet_per_minute_box" readonly="readonly" style="width:130px"/>
+		<tr><td class="right" style="width:175px">Pressure drop - psi:</td>		<td style="width:130px"><input type="number" id="pressure_drop_box" readonly="readonly" style="width:130px"/>
+		<tr><td class="right" style="width:175px">HP:</td>						<td style="width:130px"><input type="number" id="hp_box" readonly="readonly" style="width:130px"/></td></tr>
 
-</td></tr>
 
-
-</table>
+	</table>
 
 </div>
 

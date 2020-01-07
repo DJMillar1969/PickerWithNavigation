@@ -21,21 +21,25 @@ div.center
   margin-right: auto;
 }
 
-.center
+table.center
 {
+	width:305px;
 	margin-left: auto;
 	margin-right: auto;
-	text-align: center;
 }
 
-.right
-{
-	text-align: right;
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
-.left
-{
-	text-align: left;
+.right {
+    text-align: right;
+}
+
+.left {
+    text-align: left;
 }
 </style>
 
@@ -112,14 +116,18 @@ function togglediv(currentElem){
 <!--<h2>Circle and Cylinder Calc's</h2>-->
 <div id="cylinder" >
 
-<img src="images/CYLINDER.PNG" alt="" border="0" align="left" width="95%" />
+<img src="images/CYLINDER.PNG" alt="" border="0" align="middle" style="width:325px" />
 <table class="center">
-<tr><td>Diameter:</td><td><input type="number" id="diameter_box" /></td></tr>
-<tr><td>Height:</td><td><input type="number" id="height_box"/></td></tr>
-<tr><td>Circle Area:</td><td><input type="number" id="circle_area_box" readonly="readonly" /></td></tr>
-<tr><td>Circle Circumference:</td><td><input type="number" id="circle_circumference_box" readonly="readonly" /></td></tr>
-<tr><td>Cylinder Volume:</td><td><input type="number" id="cylinder_volume_box" readonly="readonly"/></td></tr>
-<tr><td>Cylinder Area:</td><td><input type="number" id="cylinder_area_box" readonly="readonly"/></td></tr>
+	<colgroup>
+		<col style="width:50%" />
+		<col style="width:50%" />
+	</colgroup>
+<tr><td class="right" style="width:175px">Diameter:</td>				<td style="width:130px"><input type="number" id="diameter_box" style="width:130px"/></td></tr>
+<tr><td class="right" style="width:175px">Height:</td>					<td style="width:130px"><input type="number" id="height_box" style="width:130px"/></td></tr>
+<tr><td class="right" style="width:175px">Circle Area:</td>				<td style="width:130px"><input type="number" id="circle_area_box" readonly="readonly" style="width:130px"/></td></tr>
+<tr><td class="right" style="width:175px">Circumference:</td>			<td style="width:130px"><input type="number" id="circle_circumference_box" readonly="readonly" style="width:130px"/></td></tr>
+<tr><td class="right" style="width:175px">Cylinder Volume:</td>			<td style="width:130px"><input type="number" id="cylinder_volume_box" readonly="readonly" style="width:130px"/></td></tr>
+<tr><td class="right" style="width:175px">Cylinder Area:</td>			<td style="width:130px"><input type="number" id="cylinder_area_box" readonly="readonly" style="width:130px"/></td></tr>
 </table>
 
 <div id="units">

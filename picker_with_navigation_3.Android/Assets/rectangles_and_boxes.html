@@ -19,20 +19,25 @@ div.center
   margin-right: auto;
 }
 
+table.center
+{
+	width:305px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .center {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
 }
 
-.right
-{
-	text-align: right;
+.right {
+    text-align: right;
 }
 
-.left
-{
-	text-align: left;
+.left {
+    text-align: left;
 }
 </style>
 
@@ -106,15 +111,15 @@ function togglediv(currentElem){
 <!--<h2>Rectangle and Box Calc's</h2>-->
 <div id="box" >
 
-<img src="images/BOX.PNG" alt="" border="0" align="left" width="95%"/>
+<img src="images/BOX.PNG" alt="" border="0" align="middle" style="width:325px"/>
 <table class="center">
-<tr><td>Length:</td><td><input type="number" id="length_box" /></td></tr>
-<tr><td>Width:</td><td><input type="number" id="width_box" /></td></tr>
-<tr><td>Height:</td><td><input type="number" id="height_box"/></td></tr>
-<tr><td>Rectangle Area:</td><td><input type="number" id="rectangle_area_box" readonly="readonly" /></td></tr>
-<tr><td>Rectangle Perimeter:</td><td><input type="number" id="rectangle_perimeter_box" readonly="readonly" /></td></tr>
-<tr><td>Box Volume:</td><td><input type="number" id="box_volume_box" readonly="readonly"/></td></tr>
-<tr><td>Box Area:</td><td><input type="number" id="box_area_box" readonly="readonly"/></td></tr>
+	<tr><td class="right" style="width:175px">Length:</td>				<td style="width:130px"><input type="number" id="length_box"  style="width:130px"/></td></tr>
+	<tr><td class="right" style="width:175px">Width:</td>				<td style="width:130px"><input type="number" id="width_box"  style="width:130px"/></td></tr>
+	<tr><td class="right" style="width:175px">Height:</td>				<td style="width:130px"><input type="number" id="height_box"  style="width:130px"/></td></tr>
+	<tr><td class="right" style="width:175px">Rectangle Area:</td>		<td style="width:130px"><input type="number" id="rectangle_area_box" readonly="readonly"  style="width:130px"/></td></tr>
+	<tr><td class="right" style="width:175px">Rectangle Perimeter:</td>	<td style="width:130px"><input type="number" id="rectangle_perimeter_box" readonly="readonly"  style="width:130px"/></td></tr>
+	<tr><td class="right" style="width:175px">Box Volume:</td>			<td style="width:130px"><input type="number" id="box_volume_box" readonly="readonly"  style="width:130px"/></td></tr>
+	<tr><td class="right" style="width:175px">Box Area:</td>			<td style="width:130px"><input type="number" id="box_area_box" readonly="readonly"  style="width:130px"/></td></tr>
 </table>
 
 <div id="units">
