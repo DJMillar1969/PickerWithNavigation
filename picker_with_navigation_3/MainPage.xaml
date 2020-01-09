@@ -6,19 +6,21 @@
              mc:Ignorable="d"
              x:Class="UltimateConvertor.MainPage"
              xmlns:ads="clr-namespace:UltimateConvertor.Controls;assembly=UltimateConvertor"
-            >
+             >
 
     <NavigationPage.TitleView>
         <Label Text="Ultimate Converter" FontSize="25" TextColor="White"/>
     </NavigationPage.TitleView>
-    
+
     <ContentPage.ToolbarItems >
+
         <ToolbarItem Name="MenuItem1" Order="Primary" Icon="menu_icon.png"   Priority="0" Activated="MenuItem1_Activated" />
+
     </ContentPage.ToolbarItems>
-   
-        <StackLayout>
-            <WebView x:Name="browser" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
-            <ads:AdControlView x:Name="AdBox" BackgroundColor="#FF2296F3" HeightRequest="50" VerticalOptions="End"/>
-        </StackLayout>
-   
+
+    <!--<local:AdMobView AdUnitId="{Binding AdUnitId}" x:Name="AdBox" BackgroundColor="#FF2296F3"/>-->
+    <!--<ads:AdControlView x:Name="AdBox" BackgroundColor="#FF2296F3"></ads:AdControlView>-->
+    <!--<abstractions:AdMobView AdUnitId="ca-app-pub-3940256099942544/6300978111"   x:Name="AdBox"/>-->
+    <!--<BoxView HeightRequest="40" x:Name="AdBox"/>-->
+    <!--<ads:AdControlView x:Name="AdBox" BackgroundColor="#FF2296F3" />-->
 </ContentPage>

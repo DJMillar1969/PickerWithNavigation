@@ -25,12 +25,31 @@ div.center
 	margin-right: auto;
 	text-align: center;
 }
+
+.black
+{
+	color: black;
+}
+
+.red
+{
+	color: red;
+}
+
 </style>
 
 <script type="text/javascript">
 window.onload = addListeners;
 
 var inputlist;
+var boxList = [
+	"A_box",
+	"B_box",
+	"C_box",
+	"a_box",
+	"b_box",
+	"c_box"
+	];
 
 function addListeners(){
 	document.getElementById('A_box').addEventListener("keyup",value_changed,false);
@@ -52,7 +71,8 @@ function value_changed(){
 	document.getElementById("area_box").value = "";
 	document.getElementById("perimeter_box").value = "";
 	document.getElementById("instructions").innerHTML = "Enter any 3 variables<br /> the others will be calculated";
-	document.getElementById("instructions").style.color = "black";
+    document.getElementById("instructions").style.color = "black";
+	blackInputs();
 
 	inputlist = "";
 	if (document.getElementById("A_box").value != ""){inputlist += "A"};
@@ -71,7 +91,8 @@ function value_changed(){
 	
 	if(inputlist.length > 3){
 		document.getElementById("instructions").innerHTML = "Please enter only 3 variables<br />and then click 'Calculate'";
-		document.getElementById("instructions").style.color = "red";
+        document.getElementById("instructions").style.color = "red";
+		redInputs();
 		}
 	
 }
@@ -260,13 +281,42 @@ function calculatevalues(){
 
 function area_perimeter(A,B,C,b){
 	var area = C*A*Math.sin(dtr(b))/2;
-	var perimeter = 1*A+1*B+1*C;
+    var perimeter = 1 * A + 1 * B + 1 * C;
+
+	if(isNaN(1*A+1*B+1*C+1*b) || area == 0.0)
+		{ 	//alert(area + " " + B);
+			//alert(1*A+1*B+1*C+1*b);
+		document.getElementById("instructions").innerHTML = "Invalid input<br />please check your entries";
+		document.getElementById("instructions").style.color = "red";
+	
+		redInputs();
+		return;
+		}
 	
 	document.getElementById("area_box").value = area;
 	document.getElementById("perimeter_box").value = perimeter;
 		//alert(area + " " + perimeter);
 		
+    }
+
+function redInputs(){
+	boxList.forEach(makeRed);
 }
+
+function makeRed(item){
+	document.getElementById(item).classList.remove("black");
+	document.getElementById(item).classList.add("red");
+}
+
+function blackInputs(){
+  boxList.forEach(makeBlack);
+}
+
+function makeBlack(item){
+	document.getElementById(item).classList.remove("red");
+	document.getElementById(item).classList.add("black");
+}
+
 
 function dtr(deg){
 	return deg*Math.PI/180;

@@ -39,8 +39,8 @@ namespace UltimateConvertor.Droid.Helpers
 
 			if (e.PropertyName == nameof(AdView.AdUnitId))
 			{
-				//Control.AdUnitId = "ca-app-pub-1884504687379461/2724319156";
-				Control.AdUnitId = "ca-app-pub-3940256099942544/6300978111"; // use this id for testing
+				Control.AdUnitId = "ca-app-pub-1884504687379461/2724319156"; // use this for Ultimate Converter 
+				//Control.AdUnitId = "ca-app-pub-3940256099942544/6300978111"; // use this id for testing
 			}
 		}
 
@@ -49,8 +49,8 @@ namespace UltimateConvertor.Droid.Helpers
 			var adView = new AdView(Context)
 			{
 				AdSize = AdSize.Banner,
-				//AdUnitId = "ca-app-pub-1884504687379461/2724319156"
-				AdUnitId = "ca-app-pub-3940256099942544/6300978111" // use this id for testing
+				AdUnitId = "ca-app-pub-1884504687379461/2724319156"  // use this for Ultimate Converter 
+				//AdUnitId = "ca-app-pub-3940256099942544/6300978111" // use this id for testing
 
 
 			};

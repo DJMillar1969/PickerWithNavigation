@@ -30,14 +30,15 @@ div.center
 	margin: 5px;
 	padding: 15px 10px 3px 10px;
 	height: 38px;
-    /*width: 95%;*/
+    width: 300px;
 	background: silver;
 	border: 2px solid black;
 	text-align: left;
 	font-size: 1.5em;
 	font-weight: bold;
 	border-radius: 10px;
-	
+	margin-left: auto;
+	margin-right: auto;
 }
 
 tr, input{
@@ -349,10 +350,12 @@ function togglediv(currentElem){
 
 
 <div class="unitgroup" onclick="togglediv('pressure');">Pressure Converter <span id="pressurearrow" class="navarrow">&#9660;</span></div>
-<div id="pressure" style="display:none">
+<div id="pressure" style="display: none">
 <table class="center">
-<col width="45%">
-<col width="55%">
+    <colgroup>
+        <col width="145">
+        <col width="155">
+    </colgroup>
 <tr><td>PSI:</td> <td><input type="number" id="psi_box" /></td></tr>
 <tr><td>Bar:</td><td><input type="number" id="bar_box"/></td></tr>
 <tr><td>Pascal:</td> <td> <input type="number" id="pascal_box"/></td></tr>
@@ -371,8 +374,10 @@ function togglediv(currentElem){
 <!-- <h2 onclick="togglediv('temperature');">Temperature Converter <span id="temperaturearrow" class="navarrow">&#9660;</span></h2> -->
 <div id="temperature" style="display:none">
 <table class="center">
-<col width="45%">
-<col width="55%">
+    <colgroup>
+        <col width="145">
+        <col width="155">
+    </colgroup>
 <tr><td>Celsius:</td><td><input type="number" id="celsius_box" /></td></tr>
 <tr><td>Fahrenheit:</td><td><input type="number" id="fahrenheit_box"/></td></tr>
 <tr><td>Kelvin:</td><td><input type="number" id="kelvin_box"/></td></tr>
@@ -382,8 +387,10 @@ function togglediv(currentElem){
 <div class="unitgroup" onclick="togglediv('volume');">Volume Converter <span id="volumearrow" class="navarrow">&#9660;</span></div>
 <div id="volume" style="display:none">
 <table class="center">
-<col width="45%">
-<col width="55%">
+    <colgroup>
+        <col width="145">
+        <col width="155">
+    </colgroup>
 <tr><td>Drop:</td><td><input type="number" id="drop_box" /></td></tr>
 <tr><td>Teaspoon:</td><td><input type="number" id="teaspoon_box"/></td></tr>
 <tr><td>Tablespoon:</td><td><input type="number" id="tablespoon_box"/></td></tr>
@@ -406,8 +413,10 @@ function togglediv(currentElem){
 <div class="unitgroup" onclick="togglediv('length');">Length Converter <span id="lengtharrow" class="navarrow">&#9660;</span></div>
 <div id="length" style="display:none">
 <table class="center">
-<col width="45%">
-<col width="55%">
+    <colgroup>
+        <col width="145">
+        <col width="155">
+    </colgroup>
 <tr><td>Mill:</td><td><input type="number" id="mill_box" /></td></tr>
 <tr><td>Inch:</td><td><input type="number" id="inch_box" /></td></tr>
 <tr><td>Foot:</td><td><input type="number" id="foot_box" /></td></tr>
@@ -427,8 +436,10 @@ function togglediv(currentElem){
 <div class="unitgroup" onclick="togglediv('area');">Area Converter <span id="areaarrow" class="navarrow">&#9660;</span></div>
 <div id="area" style="display:none">
 <table class="center">
-<col width="45%">
-<col width="55%">
+    <colgroup>
+        <col width="145">
+        <col width="155">
+    </colgroup>
 <tr><td>Acre:</td><td><input type="number" id="acre_box" /></td></tr>
 <tr><td>IN^2:</td><td><input type="number" id="in_square_box" /></td></tr>
 <tr><td>FT^2:</td><td><input type="number" id="ft_square_box" /></td></tr>
@@ -444,8 +455,10 @@ function togglediv(currentElem){
 <div class="unitgroup" onclick="togglediv('speed');">Speed Converter <span id="speedarrow" class="navarrow">&#9660;</span></div>
 <div id="speed" style="display:none">
 <table class="center">
-<col width="45%">
-<col width="55%">
+    <colgroup>
+        <col width="145">
+        <col width="155">
+    </colgroup>
 <tr><td>MPH:</td><td><input type="number" id="mph_box" /></td></tr>
 <tr><td>kPH:</td><td><input type="number" id="kph_box" /></td></tr>
 <tr><td>m/s:</td><td><input type="number" id="mps_box" /></td></tr>
@@ -456,8 +469,10 @@ function togglediv(currentElem){
 <div class="unitgroup" onclick="togglediv('weight');">Weight Converter <span id="weightarrow" class="navarrow">&#9660;</span></div>
 <div id="weight" style="display:none">
 <table class="center">
-<col width="45%">
-<col width="55%">
+    <colgroup>
+        <col width="145">
+        <col width="155">
+    </colgroup>
 <tr><td>Ounces:</td><td><input type="number" id="ounce_box" /></td></tr>
 <tr><td>Troy Ounces:</td><td><input type="number" id="troy_ounce_box" /></td></tr>
 <tr><td>Pounds:</td><td><input type="number" id="pound_box" /></td></tr>
@@ -470,11 +485,13 @@ function togglediv(currentElem){
 </table>
 </div>
 
-<div class="unitgroup" onclick="togglediv('power');" class="center">Power Converter <span id="powerarrow" class="navarrow">&#9660;</span></div>
+<div class="unitgroup" onclick="togglediv('power');">Power Converter <span id="powerarrow" class="navarrow">&#9660;</span></div>
 <div id="power" style="display:none">
 <table class="center">
-<col width="45%">
-<col width="55%">
+    <colgroup>
+        <col width="145">
+        <col width="155">
+    </colgroup>
 <tr><td>kW:</td><td><input type="number" id="kW_box" /></td></tr>
 <tr><td>hp:</td><td><input type="number" id="hp_box" /></td></tr>
 <tr><td>W:</td><td><input type="number" id="watt_box" /></td></tr>
@@ -486,8 +503,10 @@ function togglediv(currentElem){
 <div class="unitgroup" onclick="togglediv('angle');">Angle Converter <span id="anglearrow" class="navarrow">&#9660;</span></div>
 <div id="angle" style="display:none">
 <table class="center">
-<col width="45%">
-<col width="55%">
+    <colgroup>
+        <col width="145">
+        <col width="155">
+    </colgroup>
 <tr><td>Degrees:</td><td><input type="number" id="degree_box" /></td></tr>
 <tr><td>Radians:</td><td><input type="number" id="radian_box" /></td></tr>
 <tr><td>Gradians:</td><td><input type="number" id="gradian_box" /></td></tr>

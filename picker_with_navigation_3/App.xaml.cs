@@ -10,7 +10,7 @@ namespace UltimateConvertor
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new NavigationPage(new MainPage("ultimate_converter.html", "Ultimate Converter"));
         }
 
         protected override void OnStart()
