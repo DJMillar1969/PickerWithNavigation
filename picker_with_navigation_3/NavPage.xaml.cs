@@ -23,7 +23,8 @@ namespace UltimateConvertor
 				new WebPage { Name = "circles_and_cylinders.html", Title = "Circle and Cylinder Calculator" },
 				new WebPage { Name = "thermal_expansion_calculator.html", Title = "Thermal Expansion Calculator" },
 				new WebPage { Name = "triangle.html", Title = "Right Triangle Calculator" },
-				new WebPage { Name = "triangle2.html", Title = "Triangle Calculator" }
+				new WebPage { Name = "triangle2.html", Title = "Triangle Calculator" },
+				new WebPage { Name = "degreesminutesseconds.html", Title = "DMS Calculator" }
 			};
 
 

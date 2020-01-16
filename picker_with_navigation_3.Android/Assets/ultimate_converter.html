@@ -117,6 +117,9 @@ var units = [
  {box_id:"ml_box",
  factor:0.001,
  type:"volume"},
+ {box_id:"cc_box",
+ factor:0.001,
+ type:"volume"},
  {box_id:"tablespoon_box",
  factor:0.01478676478125,
  type:"volume"},
@@ -200,6 +203,9 @@ var units = [
  type:"length"},
  {box_id:"acre_box",
  factor:4046.8564224,
+ type:"area"},
+ {box_id:"hectare_box",
+ factor:10000.0,
  type:"area"},
  {box_id:"in_square_box",
  factor:0.00064516,
@@ -405,6 +411,7 @@ function togglediv(currentElem){
 <tr><td>Yard^3:</td><td><input type="number" id="yard_cubed_box"/></td></tr>
 <tr><td>Acre Foot:</td><td><input type="number" id="acre_foot_box"/></td></tr>
 <tr><td>mL:</td><td><input type="number" id="ml_box"/></td></tr>
+<tr><td>cc:</td><td><input type="number" id="cc_box" /></td></tr>
 <tr><td>Liter:</td><td><input type="number" id="liter_box"/></td></tr>
 <tr><td>M^3:</td><td><input type="number" id="meter_cubed_box"/></td></tr>
 </table>
@@ -441,6 +448,7 @@ function togglediv(currentElem){
         <col width="155">
     </colgroup>
 <tr><td>Acre:</td><td><input type="number" id="acre_box" /></td></tr>
+<tr><td>Hectare:</td><td><input type="number" id="hectare_box" /></td></tr>
 <tr><td>IN^2:</td><td><input type="number" id="in_square_box" /></td></tr>
 <tr><td>FT^2:</td><td><input type="number" id="ft_square_box" /></td></tr>
 <tr><td>Yard^2:</td><td><input type="number" id="yard_square_box" /></td></tr>
