@@ -19,7 +19,7 @@
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
             <BoxView HeightRequest="10" />
-            <Label Text="Ultimate Converter version 1.0.0" HorizontalTextAlignment="Center" FontSize="22" TextColor="Black"/>
+            <Label Text="Ultimate Converter version 1.0.2" HorizontalTextAlignment="Center" FontSize="22" TextColor="Black"/>
             <Label Text="Little Mountain Technologies ©2019" HorizontalTextAlignment="Center" FontSize="18" TextColor="Black"/>
             <BoxView HeightRequest="15" />
             <Label Text="For inquiries please contact: support@little-mountain-tech.com" FontSize="20" HorizontalTextAlignment="Center" TextColor="Black"/>

@@ -96,6 +96,15 @@ function dms_changed(){
 
     }
 
+    function clearAll() {
+		document.getElementById("degree_box").value = "";
+		document.getElementById("minute_box").value = "";
+		document.getElementById("second_box").value = "";
+        document.getElementById("decimal_degree_box").value = "";
+        document.getElementById("outputDMS").innerHTML = "**";
+
+    }
+
 </script>
 	
 </head>
@@ -121,7 +130,8 @@ function dms_changed(){
 		</tr>
 	</table>
 	<br/>
-	<p id="outputDMS"></p>
+	<p id="outputDMS" height="30px">** </p>
+	<input type="button" value="Clear All" onclick="clearAll()" />
 
 </div>
 

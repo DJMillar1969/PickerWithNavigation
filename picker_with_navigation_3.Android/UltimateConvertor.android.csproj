@@ -111,9 +111,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\hp_calcs.html" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidAsset Include="Assets\circles_and_cylinders.html" />
   </ItemGroup>
   <ItemGroup>
@@ -157,6 +154,15 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\degreesminutesseconds.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\ohms_law.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\images\ohms_law.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\hp_calcs.html" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

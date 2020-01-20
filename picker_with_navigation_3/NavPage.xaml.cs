@@ -24,7 +24,8 @@ namespace UltimateConvertor
 				new WebPage { Name = "thermal_expansion_calculator.html", Title = "Thermal Expansion Calculator" },
 				new WebPage { Name = "triangle.html", Title = "Right Triangle Calculator" },
 				new WebPage { Name = "triangle2.html", Title = "Triangle Calculator" },
-				new WebPage { Name = "degreesminutesseconds.html", Title = "DMS Calculator" }
+				new WebPage { Name = "degreesminutesseconds.html", Title = "DMS Calculator" },
+				new WebPage { Name = "ohms_law.html", Title = "Ohm's Law Calculator" }
 			};
 
 
