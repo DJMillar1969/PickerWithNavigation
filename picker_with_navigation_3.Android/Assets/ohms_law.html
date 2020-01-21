@@ -76,8 +76,8 @@ function calculatevalues(){
 		var V = Math.sqrt(P*R);
 		var I = Math.sqrt(P/R);
 		
-		document.getElementById("V_box").value = V;
-		document.getElementById("I_box").value = I; 
+		document.getElementById("V_box").value = V.toFixed(2);
+		document.getElementById("I_box").value = I.toFixed(2); 
 		break;
 	
 	case "PV":
@@ -86,8 +86,8 @@ function calculatevalues(){
 		var I = P/V;
 		var R = (V*V)/P;
 		
-		document.getElementById("I_box").value = I;
-		document.getElementById("R_box").value = R; 
+		document.getElementById("I_box").value = I.toFixed(2);
+		document.getElementById("R_box").value = R.toFixed(2); 
 		break;
 
 	case "PI":
@@ -97,8 +97,8 @@ function calculatevalues(){
 		var V = P/I;		
 		var R= P/(I*I);
 				
-		document.getElementById("V_box").value = V; 
-		document.getElementById("R_box").value = R; 
+		document.getElementById("V_box").value = V.toFixed(2); 
+		document.getElementById("R_box").value = R.toFixed(2); 
 		break;
 
 	case "VR":
@@ -107,8 +107,8 @@ function calculatevalues(){
 		var P = (V*V)/R;
 		var I = V/R;
 		
-		document.getElementById("P_box").value = P;
-		document.getElementById("I_box").value = I; 
+		document.getElementById("P_box").value = P.toFixed(2);
+		document.getElementById("I_box").value = I.toFixed(2); 
 		break;
 
 	case "IR":
@@ -117,8 +117,8 @@ function calculatevalues(){
 		var V = R*I;
 		var P = R*(I*I);
 
-		document.getElementById("V_box").value = V; 
-		document.getElementById("P_box").value = P; 
+		document.getElementById("V_box").value = V.toFixed(2); 
+		document.getElementById("P_box").value = P.toFixed(2); 
 		break;
 
 	case "IV":
@@ -127,8 +127,8 @@ function calculatevalues(){
 		var R = V/I;
 		var P = V*I;
 
-		document.getElementById("R_box").value = R; 
-		document.getElementById("P_box").value = P; 
+		document.getElementById("R_box").value = R.toFixed(2); 
+		document.getElementById("P_box").value = P.toFixed(2); 
 		break;
 
 
@@ -185,7 +185,7 @@ function clear_box(id){
 <tr><td>I - amps:</td><td><input type="number" id="I_box"/><button onclick=(clear_box("I_box"))>X</button></td></tr>
 <tr><td>P - watts:</td><td><input type="number" id="P_box" /><button onclick=(clear_box("P_box"))>X</button></td></tr>
 <tr><td>R - ohms:</td><td><input type="number" id="R_box"/><button onclick=(clear_box("R_box"))>X</button></td></tr>
-<tr><td></td><td><input type="button" class="button" id="calculate_button" onClick="calculatevalues()" /></td></tr>
+<tr><td></td><td align="left"><input type="button" class="button" id="calculate_button" onClick="calculatevalues()" /></td></tr>
 </table>
 
 <div style="height:200px"></div>

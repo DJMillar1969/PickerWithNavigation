@@ -344,7 +344,7 @@ function clear_box(id, group){
 			<tr><td style="width:110px">Pressure - psi:</td><td style="width:180px"><input type="number" id="pressure_box" style="width:150px" /><button onclick=(clear_box("pressure_box","hydraulic"))>X</button></td></tr>
 			<tr><td style="width:110px">Flow - gpm:</td><td style="width:180px"><input type="number" id="flow_box" style="width:150px" /><button onclick=(clear_box("flow_box","hydraulic"))>X</button></td></tr>
 			<tr><td style="width:110px">Horse Power:</td><td style="width:180px"><input type="number" id="hp_hydraulic_box" style="width:150px" /><button onclick=(clear_box("hp_hydraulic_box","hydraulic"))>X</button></td></tr>
-			<tr><td style="width:110px">Watts:</td><td style="width:180px"><input type="number" id="watts_hydraulic_box" style="width:150px" readonly /></td></tr>
+			<tr><td style="width:110px">Watts:</td><td align="left" style="width:180px"><input type="number" id="watts_hydraulic_box" style="width:150px" readonly /></td></tr>
 			<tr><td style="width:110px"></td><td align="left" style="width:180px"><input type="button" class="button" id="calculate_hydraulic_button" onClick="calculateHydraulicValues()" disabled /></td></tr>
 		</table>
 		<div style="height:35px"></div>
@@ -354,7 +354,7 @@ function clear_box(id, group){
 			<tr><td style="width:110px">Torque - in*lbf:</td><td style="width:180px"><input type="number" id="torque_box" style="width:150px" /><button onclick=(clear_box("torque_box","rotational"))>X</button></td></tr>
 			<tr><td style="width:110px">RPM:</td><td style="width:180px"><input type="number" id="rpm_box" style="width:150px" /><button onclick=(clear_box("rpm_box","rotational"))>X</button></td></tr>
 			<tr><td style="width:110px">Horse Power:</td><td style="width:180px"><input type="number" id="hp_rotational_box" style="width:150px" /><button onclick=(clear_box("hp_rotational_box","rotational"))>X</button></td></tr>
-			<tr><td style="width:110px">Watts:</td><td style="width:180px"><input type="number" id="watts_rotational_box" style="width:150px" readonly /></td></tr>
+			<tr><td style="width:110px">Watts:</td><td align="left" style="width:180px"><input type="number" id="watts_rotational_box" style="width:150px" readonly /></td></tr>
 			<tr><td style="width:110px"></td><td align="left" style="width:180px"><input type="button" class="button" id="calculate_rotational_button" onClick="calculateRotationalValues()" disabled /></td></tr>
 		</table>
 		<div style="height:35px"></div>
@@ -365,7 +365,7 @@ function clear_box(id, group){
 			<tr><td style="width:110px">Distance - feet:</td><td style="width:180px"><input type="number" id="distance_box" style="width:150px" /><button onclick=(clear_box("distance_box","mechanical"))>X</button></td></tr>
 			<tr><td style="width:110px">Seconds:</td><td style="width:180px"><input type="number" id="seconds_box" style="width:150px" /><button onclick=(clear_box("seconds_box","mechanical"))>X</button></td></tr>
 			<tr><td style="width:110px">Horse Power:</td><td style="width:180px"><input type="number" id="hp_mechanical_box" style="width:150px" /><button onclick=(clear_box("hp_mechanical_box","mechanical"))>X</button></td></tr>
-			<tr><td style="width:110px">Watts:</td><td style="width:180px"><input type="number" id="watts_mechanical_box" style="width:150px" readonly /></td></tr>
+			<tr><td style="width:110px">Watts:</td><td align="left" style="width:180px"><input type="number" id="watts_mechanical_box" style="width:150px" readonly /></td></tr>
 			<tr><td style="width:110px"></td><td align="left" style="width:180px"><input type="button" class="button" id="calculate_mechanical_button" onClick="calculateMechanicalValues()" disabled /></td></tr>
 		</table>
 		<div style="height:35px"></div>
@@ -375,7 +375,7 @@ function clear_box(id, group){
 			<tr><td style="width:110px">Volts:</td><td style="width:180px"><input type="number" id="volts_box" style="width:150px" /><button onclick=(clear_box("volts_box","electrical"))>X</button></td></tr>
 			<tr><td style="width:110px">Amps:</td><td style="width:180px"><input type="number" id="amps_box" style="width:150px" /><button onclick=(clear_box("amps_box","electrical"))>X</button></td></tr>
 			<tr><td style="width:110px">Horse Power:</td><td style="width:180px"><input type="number" id="hp_electrical_box" style="width:150px" /><button onclick=(clear_box("hp_electrical_box","electrical"))>X</button></td></tr>
-			<tr><td style="width:110px">Watts:</td><td style="width:180px"><input type="number" id="watts_electrical_box" align="left" style="width:150px" readonly /></td></tr>
+			<tr><td style="width:110px">Watts:</td><td align="left" style="width:180px"><input type="number" id="watts_electrical_box" align="left" style="width:150px" readonly /></td></tr>
 			<tr><td style="width:110px"></td><td align="left" style="width:180px"><input type="button" class="button" id="calculate_electrical_button" onClick="calculateElectricalvalues()" disabled /></td></tr>
 		</table>
 
