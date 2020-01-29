@@ -1,0 +1,130 @@
+﻿<!DOCTYPE HTML>
+
+<html>
+<head>
+	<title>Water flow through steel pipe</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+input[readonly="readonly"]
+{
+border:0;
+}
+
+div.center
+{
+  width: 95vw;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table.center
+{
+	width:305px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.center
+{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+    .right {
+        text-align: right;
+    }
+
+    .left {
+        text-align: left;
+    }
+</style>
+
+<script type="text/javascript">
+window.onload = addListeners;
+
+
+function addListeners(){
+	document.getElementById('gpm_box').addEventListener("keyup",value_changed,false);
+	document.getElementById('psi_box').addEventListener("keyup",value_changed,false);
+	document.getElementById('pipe_id_box').addEventListener("keyup",value_changed,false);
+	document.getElementById('length_of_pipe_box').addEventListener("keyup",value_changed,false);
+}
+
+
+function value_changed(){
+	//alert("Hello");
+
+	var gpm = document.getElementById("gpm_box").value;
+	var psi = document.getElementById("psi_box").value;
+	var pipe_id = document.getElementById("pipe_id_box").value;
+	var length_of_pipe = document.getElementById("length_of_pipe_box").value;
+	var inches_cubed_per_second = gpm*231/60;
+	var flow_area_of_pipe = pipe_id * pipe_id * Math.PI/4;
+	var velocity_inches_per_second = inches_cubed_per_second/flow_area_of_pipe;
+	var hp = gpm*psi/1714;
+	var coefficient_of_friction = .02;
+	var mass_density = 1.940697458;//slugs per cubic foot
+	var pressure_drop = coefficient_of_friction*(length_of_pipe/(pipe_id/12))*(mass_density*Math.pow((velocity_inches_per_second/12),2)/2)/144;
+	
+	//alert(gpm + psi + pipe_id + length_of_pipe);
+	
+	
+	document.getElementById("velocity_feet_per_second_box").value = (velocity_inches_per_second /12).toFixed(2);
+	
+	document.getElementById("velocity_feet_per_minute_box").value = (velocity_inches_per_second /12*60).toFixed(2);
+	
+	if(isNaN(pressure_drop))
+	{}else{document.getElementById("pressure_drop_box").value = (pressure_drop).toFixed(2);}
+	
+	
+	document.getElementById("hp_box").value = (hp).toFixed(2);
+	
+	
+}
+
+
+function togglediv(currentElem){
+	var targetdiv = document.getElementById(currentElem);
+	targetdiv.style.display = targetdiv.style.display == "none" ? "block" : "none";
+}
+
+</script>
+	
+</head>
+
+
+<body>
+
+<div class="center">
+
+<h2>Water Flow Through Steel Pipe</h2>
+<div id="water_flow" >
+
+
+	<table class="center">
+		<colgroup>
+			<col style="width:50%" />
+			<col style="width:50%" />
+		</colgroup>
+		<tr><td class="right" style="width:175px">GPM:</td>						<td style="width:130px"><input type="number" id="gpm_box" style="width:130px"/></td></tr>
+		<tr><td class="right" style="width:175px">PSI:</td>						<td style="width:130px"><input type="number" id="psi_box" style="width:130px"/></td></tr>
+		<tr><td class="right" style="width:175px">Pipe ID - inches:</td>		<td style="width:130px"><input type="number" id="pipe_id_box" style="width:130px"/></td></tr>
+		<tr><td class="right" style="width:175px">Length of pipe - feet:</td>	<td style="width:130px"><input type="number" id="length_of_pipe_box" style="width:130px"/></td></tr>
+		<tr><td class="right" style="width:175px">Velocity - ft/sec:</td>		<td style="width:130px"><input type="number" id="velocity_feet_per_second_box" readonly="readonly" style="width:130px"/>
+		<tr><td class="right" style="width:175px">Velocity - ft/min:</td>		<td style="width:130px"><input type="number" id="velocity_feet_per_minute_box" readonly="readonly" style="width:130px"/>
+		<tr><td class="right" style="width:175px">Pressure drop - psi:</td>		<td style="width:130px"><input type="number" id="pressure_drop_box" readonly="readonly" style="width:130px"/>
+		<tr><td class="right" style="width:175px">HP:</td>						<td style="width:130px"><input type="number" id="hp_box" readonly="readonly" style="width:130px"/></td></tr>
+
+
+	</table>
+
+</div>
+
+
+</div>
+
+</body>
+</html>

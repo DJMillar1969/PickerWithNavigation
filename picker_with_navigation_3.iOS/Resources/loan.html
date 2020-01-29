@@ -1,0 +1,115 @@
+﻿<!DOCTYPE HTML>
+
+<html>
+<head>
+	<title>Loan Calculator</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+input[readonly="readonly"]
+{
+border:0;
+}
+
+div.center
+{
+  width: 95vw;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table.center
+{
+	width:300px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+.left {
+    text-align: left;
+}
+
+</style>
+
+<script type="text/javascript">
+window.onload = addListeners;
+
+
+function addListeners(){
+	document.getElementById('amount_box').addEventListener("keyup",value_changed,false);
+	document.getElementById('annual_rate_box').addEventListener("keyup",value_changed,false);
+	document.getElementById('number_monthes_box').addEventListener("keyup",value_changed,false);
+	document.getElementById('payment_box').addEventListener("keyup",payment_changed,false);
+}
+
+
+function value_changed(){
+	//var current_id = this.id;
+	var PV = document.getElementById("amount_box").value;
+	var n = document.getElementById("number_monthes_box").value;
+	var r = document.getElementById("annual_rate_box").value/1200;
+	var payment = r*PV/(1-Math.pow((1+r),-n));
+	document.getElementById("payment_box").value = payment.toFixed(2);
+	document.getElementById("totalofpayments").value = (payment*n).toFixed(2);
+	document.getElementById("totalinterest").value = (payment*n-PV).toFixed(2);
+	
+}
+
+
+function payment_changed(){
+	//var current_id = this.id;
+	var payment = document.getElementById("payment_box").value;
+	var n = document.getElementById("number_monthes_box").value;
+	var r = document.getElementById("annual_rate_box").value/1200;
+	var PV = (payment*(1-Math.pow((1+r),-n)))/r;
+	document.getElementById("amount_box").value = PV.toFixed(2);
+	document.getElementById("totalofpayments").value = (payment*n).toFixed(2);
+	document.getElementById("totalinterest").value = (payment*n-PV).toFixed(2);
+}
+
+
+function togglediv(currentElem){
+	var targetdiv = document.getElementById(currentElem);
+	targetdiv.style.display = targetdiv.style.display == "none" ? "block" : "none";
+}
+
+</script>
+	
+</head>
+
+
+<body>
+
+<div class="center">
+
+<h1>Loan Calculator</h1>
+<div id="loan">
+	<table  class="center" >
+		<tr><td class="right" style="width:170px">Loan Amount:</td>				<td style="width:130px"><input type="number" id="amount_box" style="width:130px" /></td></tr>
+		<tr><td class="right" style="width:170px">Annual Rate %:</td>			<td style="width:130px"><input type="number" id="annual_rate_box"  style="width:130px" /></td></tr>
+		<tr><td class="right" style="width:170px">Number of monthes:</td>		<td style="width:130px"><input type="number" id="number_monthes_box"  style="width:130px" /></td></tr>
+		<tr><td class="right" style="width:170px">Monthly Payment:</td>			<td style="width:130px"><input type="number" id="payment_box"  style="width:130px" /></td></tr>
+		<tr><td class="right" style="width:170px">Total of all payments:</td>	<td style="width:130px"><input type="number" id="totalofpayments" readonly="readonly"  style="width:130px" /></td></tr>
+		<tr><td class="right" style="width:170px">Total interest:</td>			<td style="width:130px"><input type="number" id="totalinterest" readonly="readonly"  style="width:130px" /></tr>
+	</table>
+
+</div>
+
+
+</div>
+
+</body>
+</html>

@@ -19,6 +19,7 @@ namespace UltimateConvertor
             //DisplayAlert("Alert", file + " " + title, "OK");
 
             Title = title;
+            
             var browser = new WebView();
             
             var htmlSource = new HtmlWebViewSource();

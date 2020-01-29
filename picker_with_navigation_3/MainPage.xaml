@@ -8,15 +8,33 @@
              xmlns:ads="clr-namespace:UltimateConvertor.Controls;assembly=UltimateConvertor"
              >
 
+
     <NavigationPage.TitleView>
-        <Label Text="Ultimate Converter" FontSize="25" TextColor="White"/>
+        
+        <StackLayout  Orientation="Horizontal" VerticalOptions="Center" >
+            <Label Text="Ultimate Converter" FontSize="25" TextColor="White"/>
+            <Image Source="menu_icon.png" HorizontalOptions="EndAndExpand">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                            Tapped="HandleTapped" />
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
     </NavigationPage.TitleView>
 
-    <ContentPage.ToolbarItems >
+    <!--<NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Spacing="10">
+            <Label Text="3.2.0" FontSize="16" TextColor="Black" VerticalTextAlignment="Center" />
+            
+        </StackLayout>
+    </NavigationPage.TitleView>-->
 
-        <ToolbarItem Name="MenuItem1" Order="Primary" Icon="menu_icon.png"   Priority="0" Activated="MenuItem1_Activated" />
 
-    </ContentPage.ToolbarItems>
+
+
+    <!--<ContentPage.ToolbarItems >
+         <ToolbarItem Name="MenuItem1" Order="Primary" Icon="menu_icon.png"   Priority="0" Activated="MenuItem1_Activated" />
+    </ContentPage.ToolbarItems>-->
 
     <!--<local:AdMobView AdUnitId="{Binding AdUnitId}" x:Name="AdBox" BackgroundColor="#FF2296F3"/>-->
     <!--<ads:AdControlView x:Name="AdBox" BackgroundColor="#FF2296F3"></ads:AdControlView>-->

@@ -1,0 +1,214 @@
+﻿<!DOCTYPE HTML>
+
+<html>
+<head>
+	<title>Thermal Expansion Calculator</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+input[readonly="readonly"]
+{
+border:0;
+}
+
+div.center
+{
+  width: 95vw;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.center
+{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.right
+{
+	text-align: right;
+}
+
+<table
+	{mso-displayed-decimal-separator:"\.";
+	mso-displayed-thousand-separator:"\,";}
+.xl1517884
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:black;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Calibri, sans-serif;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl6417884
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:black;
+	font-size:8.8pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Arial, sans-serif;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:center;
+	vertical-align:middle;
+	border:.5pt solid windowtext;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:normal;}
+.xl6517884
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:blue;
+	font-size:8.8pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Arial, sans-serif;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:center;
+	vertical-align:middle;
+	border:.5pt solid windowtext;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:normal;}
+.xl6617884
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:black;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Calibri, sans-serif;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:center;
+	vertical-align:bottom;
+	border:.5pt solid windowtext;
+	background:#92D050;
+	mso-pattern:black none;
+	white-space:nowrap;}
+>
+</style>
+</style>
+
+<script type="text/javascript">
+window.onload = addListeners;
+
+
+function addListeners(){
+	document.getElementById('coeficient_box').addEventListener("keyup",value_changed,false);
+	document.getElementById('delta_temp_box').addEventListener("keyup",value_changed,false);
+	document.getElementById('begining_length_box').addEventListener("keyup",value_changed,false);
+}
+
+
+function value_changed(){
+	var coeficient = document.getElementById("coeficient_box").value;
+	var delta_t = document.getElementById("delta_temp_box").value;
+	var begining_length = document.getElementById("begining_length_box").value;
+	var delta_length = coeficient*.000001*delta_t*begining_length;
+	document.getElementById("delta_length_box").value = delta_length;//.toFixed(2);
+}
+
+</script>
+	
+</head>
+
+<body>
+
+<div class="center">
+
+<h1>Linear Thermal Expansion Calculator</h1>
+<div id="thermal_expansion" >
+<table class="center">
+<tr><td class="right">μin/(in*F°):</td>			<td><input type="number" id="coeficient_box" /></td></tr>
+<tr><td class="right">Δ F°:</td>				<td><input type="number" id="delta_temp_box"/></td></tr>
+<tr><td class="right">Length - inches:</td>		<td><input type="number" id="begining_length_box"/></td></tr>
+<tr><td class="right">Δ Length - inches:</td>	<td><input type="number" id="delta_length_box" readonly="readonly"/></td></tr>
+
+</table>
+
+</div>
+
+</div>
+
+<div id="Thermal expansion calcs_17884" align=center x:publishsource="Excel">
+<br/><br/>
+<table border=0 cellpadding=0 cellspacing=0 width=90vw style='border-collapse:
+ collapse;table-layout:fixed;width:96pt'>
+ <col width=100vw span=2 >
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl6617884 width=50 style='height:15.0pt;width:48pt'>Material</td>
+  <td class=xl6617884 width=50 style='border-left:none;width:48pt'>&#956;in/(in*F°)</td>
+ </tr>
+ <tr height=32 style='height:24.0pt'>
+  <td height=32 class=xl6417884 width=50 style='height:24.0pt;border-top:none;
+  width:48pt'>Aluminum</td>
+  <td class=xl6517884 width=50 style='border-top:none;border-left:none;
+  width:48pt'>11.7 - 13.3</td>
+ </tr>
+ <tr height=32 style='height:24.0pt'>
+  <td height=32 class=xl6417884 width=50 style='height:24.0pt;border-top:none;
+  width:48pt'>Concrete</td>
+  <td class=xl6517884 width=50 style='border-top:none;border-left:none;
+  width:48pt'>7.22 - 7.78</td>
+ </tr>
+ <tr height=32 style='height:24.0pt'>
+  <td height=32 class=xl6417884 width=50 style='height:24.0pt;border-top:none;
+  width:48pt'>Steel</td>
+  <td class=xl6517884 width=50 style='border-top:none;border-left:none;
+  width:48pt'>6.11 - 6.94</td>
+ </tr>
+ <tr height=64 style='height:24.0pt'>
+  <td height=64 class=xl6417884 width=50 style='height:24.0pt;border-top:none;
+  width:48pt'>Steel Stainless Austenitic (304)</td>
+  <td class=xl6517884 width=50 style='border-top:none;border-left:none;
+  width:48pt'>9.61</td>
+ </tr>
+ <tr height=64 style='height:24.0pt'>
+  <td height=64 class=xl6417884 width=50 style='height:24.0pt;border-top:none;
+  width:48pt'>Steel Stainless Austenitic (310)</td>
+  <td class=xl6517884 width=50 style='border-top:none;border-left:none;
+  width:48pt'>8</td>
+ </tr>
+ <tr height=64 style='height:24.0pt'>
+  <td height=64 class=xl6417884 width=50 style='height:24.0pt;border-top:none;
+  width:48pt'>Steel Stainless Austenitic (316)</td>
+  <td class=xl6517884 width=50 style='border-top:none;border-left:none;
+  width:48pt'>8.89</td>
+ </tr>
+ <tr height=64 style='height:24.0pt'>
+  <td height=64 class=xl6417884 width=50 style='height:24.0pt;border-top:none;
+  width:48pt'>Steel Stainless Ferritic (410)</td>
+  <td class=xl6517884 width=50 style='border-top:none;border-left:none;
+  width:48pt'>5.5</td>
+ </tr>
+
+</table>
+
+</div>
+
+</body>
+</html>

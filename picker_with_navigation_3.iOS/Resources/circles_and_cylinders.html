@@ -1,0 +1,149 @@
+﻿<!DOCTYPE HTML>
+
+<html>
+<head>
+	<title>Circle and Cylinder Calc's</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+input[readonly="readonly"]
+{
+border:0;
+}
+
+
+
+div.center
+{
+  width: 95vw;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table.center
+{
+	width:305px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+.left {
+    text-align: left;
+}
+</style>
+
+<script type="text/javascript">
+window.onload = addListeners;
+
+
+function addListeners(){
+	document.getElementById('diameter_box').addEventListener("keyup",value_changed,false);
+	document.getElementById('height_box').addEventListener("keyup",value_changed,false);
+	//document.getElementsByName("fname").addEventListener("click",value_changed,false);
+}
+
+
+function value_changed(){
+	//document.getElementById("gallon").InnerHTML = "Hello";
+	var diameter = document.getElementById("diameter_box").value;
+	var height = document.getElementById("height_box").value;
+	
+	//alert(diameter);
+	var circle_area = diameter * diameter * Math.PI / 4;
+	var circle_circumference = diameter * Math.PI;
+	var cylinder_volume = circle_area * height;
+	var cylinder_area = 2 * circle_area + circle_circumference * height;
+	
+	
+	//alert(circle_area);
+	
+	document.getElementById("circle_area_box").value = (circle_area *1).toFixed(4);
+	document.getElementById("cylinder_volume_box").value = (cylinder_volume * 1).toFixed(4);
+	document.getElementById("cylinder_area_box").value = (cylinder_area * 1).toFixed(4);
+	document.getElementById("circle_circumference_box").value = (circle_circumference * 1).toFixed(4);
+	//document.getElementById("gallon").InnerHTML = "Hello";
+	
+	var units_value = "";
+	var gallons = 0;
+	var liters;
+	if (document.getElementById('unit1').checked) {
+	units_value = document.getElementById('unit1').value;
+	gallons = cylinder_volume * 0.00432900;
+	}
+	if (document.getElementById('unit2').checked) {
+	units_value = document.getElementById('unit2').value;
+	gallons = cylinder_volume * 7.48051948;
+	}
+	if (document.getElementById('unit3').checked) {
+	units_value = document.getElementById('unit3').value;
+	gallons = cylinder_volume * 264.17205236;
+	}
+	
+	//alert("Gallons: " + gallons);
+	var liters = gallons * 3.78541178;
+	var gallon_output_text = "Gallons: " + gallons.toFixed(2);
+	var liters_output_text = "Liters: " + liters.toFixed(2);
+	document.getElementById('gallon_output').innerHTML = gallon_output_text;
+	document.getElementById('liters_output').innerHTML = liters_output_text;
+}
+
+
+function togglediv(currentElem){
+	var targetdiv = document.getElementById(currentElem);
+	targetdiv.style.display = targetdiv.style.display == "none" ? "block" : "none";
+}
+
+</script>
+	
+</head>
+
+
+<body>
+
+<div class="center">
+
+<!--<h2>Circle and Cylinder Calc's</h2>-->
+<div id="cylinder" >
+
+<img src="images/CYLINDER.PNG" alt="" border="0" align="middle" style="width:325px" />
+<table class="center">
+	<colgroup>
+		<col style="width:50%" />
+		<col style="width:50%" />
+	</colgroup>
+<tr><td class="right" style="width:175px">Diameter:</td>				<td style="width:130px"><input type="number" id="diameter_box" style="width:130px"/></td></tr>
+<tr><td class="right" style="width:175px">Height:</td>					<td style="width:130px"><input type="number" id="height_box" style="width:130px"/></td></tr>
+<tr><td class="right" style="width:175px">Circle Area:</td>				<td style="width:130px"><input type="number" id="circle_area_box" readonly="readonly" style="width:130px"/></td></tr>
+<tr><td class="right" style="width:175px">Circumference:</td>			<td style="width:130px"><input type="number" id="circle_circumference_box" readonly="readonly" style="width:130px"/></td></tr>
+<tr><td class="right" style="width:175px">Cylinder Volume:</td>			<td style="width:130px"><input type="number" id="cylinder_volume_box" readonly="readonly" style="width:130px"/></td></tr>
+<tr><td class="right" style="width:175px">Cylinder Area:</td>			<td style="width:130px"><input type="number" id="cylinder_area_box" readonly="readonly" style="width:130px"/></td></tr>
+</table>
+
+<div id="units">
+  <br/>
+  <label for=""><strong>Units:</strong></label>
+  <input type="radio" id="unit1" name="unit" value="Inches" onclick="value_changed()"> Inches
+  <input type="radio" id="unit2" name="unit" value="Feet" onclick="value_changed()"> Feet
+  <input type="radio" id="unit3" name="unit" value="Meters" onclick="value_changed()"> Meters  
+ 
+</div>
+ <p id="gallon_output">Gallons:</p>
+ <p id="liters_output">Liters:</p>
+</div>
+	<div style="height:150px"></div>
+
+</div>
+
+</body>
+</html>

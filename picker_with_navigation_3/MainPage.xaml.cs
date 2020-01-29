@@ -22,6 +22,7 @@ namespace UltimateConvertor
             var htmlSource = new HtmlWebViewSource();
             var _fileName = file; // "ultimate_converter.html";
             this.Title = title; // "Ultimate Converter";
+           
 
             //htmlSource.Html = @"<html><body>
             //                    <iframe src='" + _fileName + @"' frameborder='0' width='100%' height='100%'/>
@@ -32,7 +33,7 @@ namespace UltimateConvertor
             browser.Source = htmlSource;
             browser.VerticalOptions = LayoutOptions.FillAndExpand;
             browser.HorizontalOptions = LayoutOptions.FillAndExpand;
-            var AdBox = new AdControlView
+            var AdBox = new BoxView //AdControlView
             {
                 BackgroundColor = Color.FromHex("FF2296F3"),
                 HeightRequest = 50,
@@ -50,7 +51,7 @@ namespace UltimateConvertor
             //DisplayAlert("Alert", (string)Color.Blue.ToHex(), "OK");
         }
 
-        private void MenuItem1_Activated(object sender, EventArgs e)
+        private void HandleTapped(object sender, EventArgs e)
         {
             var page = new NavPage();
             Navigation.PushAsync(page);
