@@ -11,6 +11,6 @@
         <Label FontSize="25" TextColor="White"/>
     </NavigationPage.TitleView>-->
 
-    <ads:AdControlView x:Name="AdBox" BackgroundColor="#FF2296F3" HeightRequest="50" VerticalOptions="End"/>
+    <!--<ads:AdControlView x:Name="AdBox" BackgroundColor="#FF2296F3" HeightRequest="50" VerticalOptions="End"/>-->
 
 </ContentPage>

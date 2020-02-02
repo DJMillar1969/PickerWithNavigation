@@ -30,7 +30,7 @@
             </ListView>
         </StackLayout>    
         <Button Text="About" Clicked="Button_Clicked" WidthRequest="150" HorizontalOptions="Center" />
-        <ads:AdControlView x:Name="AdBox" BackgroundColor="#FF2296F3" HeightRequest="50" HorizontalOptions="FillAndExpand" VerticalOptions="End"/>
+        <!--<ads:AdControlView x:Name="AdBox" BackgroundColor="#FF2296F3" HeightRequest="65" HorizontalOptions="FillAndExpand" VerticalOptions="End"/>-->
     </StackLayout>
     
 </ContentPage>

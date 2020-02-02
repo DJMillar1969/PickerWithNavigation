@@ -20,23 +20,21 @@ namespace UltimateConvertor
             InitializeComponent();
             var browser = new WebView();
             var htmlSource = new HtmlWebViewSource();
-            var _fileName = file; // "ultimate_converter.html";
-            this.Title = title; // "Ultimate Converter";
+            var _fileName = file; 
+            this.Title = title; 
            
 
-            //htmlSource.Html = @"<html><body>
-            //                    <iframe src='" + _fileName + @"' frameborder='0' width='100%' height='100%'/>
-            //                    </body>
-            //                    </html>";
+         
 
             htmlSource.Html = @" <iframe src='" + _fileName + @"' frameborder='0' width='100%' height='100%'/>";
             browser.Source = htmlSource;
             browser.VerticalOptions = LayoutOptions.FillAndExpand;
             browser.HorizontalOptions = LayoutOptions.FillAndExpand;
+            
             var AdBox = new BoxView //AdControlView
             {
                 BackgroundColor = Color.FromHex("FF2296F3"),
-                HeightRequest = 50,
+                HeightRequest = 65,
                 VerticalOptions = LayoutOptions.End
             };
 
@@ -46,9 +44,7 @@ namespace UltimateConvertor
             layout.Children.Add(AdBox);
 
             Content = layout;
-
-
-            //DisplayAlert("Alert", (string)Color.Blue.ToHex(), "OK");
+                                    
         }
 
         private void HandleTapped(object sender, EventArgs e)

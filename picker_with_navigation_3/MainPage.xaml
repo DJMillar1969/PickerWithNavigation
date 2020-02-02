@@ -11,9 +11,9 @@
 
     <NavigationPage.TitleView>
         
-        <StackLayout  Orientation="Horizontal" VerticalOptions="Center" >
+        <StackLayout  Orientation="Horizontal" VerticalOptions="End" >
             <Label Text="Ultimate Converter" FontSize="25" TextColor="White"/>
-            <Image Source="menu_icon.png" HorizontalOptions="EndAndExpand">
+            <Image Source="menu_icon.png" HorizontalOptions="EndAndExpand" >
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer
                             Tapped="HandleTapped" />

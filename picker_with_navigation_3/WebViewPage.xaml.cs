@@ -12,6 +12,16 @@ namespace UltimateConvertor
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class WebViewPage : ContentPage
     {
+
+
+
+
+
+
+
+
+
+
         public WebViewPage(string file, string title)
         {
             InitializeComponent();
@@ -34,7 +44,15 @@ namespace UltimateConvertor
             browser.VerticalOptions = LayoutOptions.FillAndExpand;
             browser.HorizontalOptions = LayoutOptions.FillAndExpand;
 
-          
+
+            var AdBox = new BoxView //AdControlView
+            {
+                BackgroundColor = Color.FromHex("FF2296F3"),
+                HeightRequest = 65,
+                VerticalOptions = LayoutOptions.End
+            };
+
+
             var layout = new StackLayout();
             layout.Children.Add(browser);
             layout.Children.Add(AdBox);
