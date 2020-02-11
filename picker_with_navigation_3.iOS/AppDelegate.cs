@@ -22,6 +22,7 @@ namespace UltimateConvertor.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            Google.MobileAds.MobileAds.Configure("ca-app-pub-1884504687379461~7019124091");
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 

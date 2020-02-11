@@ -12,10 +12,24 @@ namespace UltimateConvertor
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class WebViewPage : ContentPage
     {
+
+
+
+
+
+
+
+
+
+
         public WebViewPage(string file, string title)
         {
             InitializeComponent();
+
+            //DisplayAlert("Alert", file + " " + title, "OK");
+
             Title = title;
+            
             var browser = new WebView();
             
             var htmlSource = new HtmlWebViewSource();
@@ -24,9 +38,28 @@ namespace UltimateConvertor
                                 <iframe src='" + _fileName + @"' frameborder='0' width='100%' height='100%'/>
                                 </body>
                                 </html>";
+
+
             browser.Source = htmlSource;
+            browser.VerticalOptions = LayoutOptions.FillAndExpand;
+            browser.HorizontalOptions = LayoutOptions.FillAndExpand;
+
+
+            var AdBox = new BoxView //AdControlView
+            {
+                BackgroundColor = Color.FromHex("FF2296F3"),
+                HeightRequest = 65,
+                VerticalOptions = LayoutOptions.End
+            };
+
+
+            var layout = new StackLayout();
+            layout.Children.Add(browser);
+            layout.Children.Add(AdBox);
             
-            Content = browser;
+            
+            
+            Content = layout;
          
 
         }

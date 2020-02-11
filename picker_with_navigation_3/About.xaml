@@ -4,27 +4,29 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="UltimateConvertor.About"
-             Title="About">
+             x:Class="UltimateConvertor.About">
 
-<ContentPage.Content>
+    <NavigationPage.TitleView>
+        <Label Text="About" FontSize="25" TextColor="White"/>
+    </NavigationPage.TitleView>
 
-    <StackLayout VerticalOptions="CenterAndExpand"
+
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand"
                  Padding="10, 0, 0, 10">
-
-        <Image Source="squarelogo.png" 
+            <Image Source="squarelogo.png" 
                    WidthRequest="250"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
             <BoxView HeightRequest="10" />
-            <Label Text="Ultimate Convertor version 1.0.0" HorizontalTextAlignment="Center" FontSize="22" TextColor="Black"/>
+            <Label Text="Ultimate Converter version 1.0.2" HorizontalTextAlignment="Center" FontSize="22" TextColor="Black"/>
             <Label Text="Little Mountain Technologies ©2019" HorizontalTextAlignment="Center" FontSize="18" TextColor="Black"/>
-        <BoxView HeightRequest="15" />
-        <Label Text="For inquiries please contact: support@little-mountain-tech.com" FontSize="20" HorizontalTextAlignment="Center" TextColor="Black"/>
+            <BoxView HeightRequest="15" />
+            <Label Text="For inquiries please contact: support@little-mountain-tech.com" FontSize="20" HorizontalTextAlignment="Center" TextColor="Black"/>
             <BoxView HeightRequest="15" />
             <Label Text="To the best of our knowledge the conversions and calculations in this app are accurate. We accept no liability for any damages that may be caused by your use of them. Please confirm that their accuracy is acceptable for your specific purpose."
-                   FontSize="16" HorizontalTextAlignment="Center" TextColor="Gray"/>
-                   
-    </StackLayout>
-</ContentPage.Content>
+                   FontSize="16" HorizontalTextAlignment="Center" TextColor="Gray" Padding="10,0,10,0"/>
+        </StackLayout>
+    </ContentPage.Content>
+
 </ContentPage>  

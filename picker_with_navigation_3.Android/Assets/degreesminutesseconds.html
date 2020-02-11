@@ -1,0 +1,141 @@
+﻿<!DOCTYPE HTML>
+
+<html>
+<head>
+	<title>Degrees Minutes Seconds Calculator</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[readonly="readonly"]
+{
+border:0;
+}
+
+div.center
+{
+  width: 95vw;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table.center
+{
+	width:300px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+.left {
+    text-align: left;
+}
+
+</style>
+
+<script type="text/javascript">
+window.onload = addListeners;
+
+
+function addListeners(){
+	document.getElementById('decimal_degree_box').addEventListener("keyup",value_changed,false);
+	document.getElementById('degree_box').addEventListener("keyup",dms_changed,false);
+	document.getElementById('minute_box').addEventListener("keyup",dms_changed,false);
+	document.getElementById('second_box').addEventListener("keyup",dms_changed,false);
+}
+
+
+function value_changed(){
+	//var current_id = this.id;
+	var decimalDegrees = document.getElementById("decimal_degree_box").value;
+	var degrees = Math.floor(decimalDegrees);
+	var minutes = (decimalDegrees - degrees)*60;
+    var seconds = (minutes - Math.floor(minutes)) * 60;
+		minutes = Math.floor(minutes);
+	
+	document.getElementById("degree_box").value = degrees;
+	document.getElementById("minute_box").value = minutes;
+	document.getElementById("second_box").value = seconds.toFixed(2);
+	
+	updateOutput(degrees, minutes, seconds);
+}
+
+
+
+function dms_changed(){
+	var degrees = 1*document.getElementById("degree_box").value;
+	var minutes = 1*document.getElementById("minute_box").value;
+	var seconds = 1*document.getElementById("second_box").value;
+	
+	decimal_degrees = degrees + (minutes/60) + (seconds /3600);
+	
+	document.getElementById("decimal_degree_box").value = decimal_degrees.toFixed(4);
+	
+    updateOutput(degrees, minutes, seconds);
+    }
+
+    function updateOutput(degrees, minutes, seconds) {
+		document.getElementById("outputDMS").innerHTML = degrees + String.fromCharCode(186) + minutes + "\'" + seconds.toFixed(2) + "\"";
+
+    }
+
+    function clearAll() {
+		document.getElementById("degree_box").value = "";
+		document.getElementById("minute_box").value = "";
+		document.getElementById("second_box").value = "";
+        document.getElementById("decimal_degree_box").value = "";
+        document.getElementById("outputDMS").innerHTML = "**";
+
+    }
+
+</script>
+	
+</head>
+
+
+<body>
+
+<div class="center">
+
+<h1>Degrees Minutes Seconds Calculator</h1>
+<div id="loan">
+	<table  class="center" >
+		<tr><td class="right" style="width:110px">Decimal Degrees:</td>	<td style="width:130px"><input type="number" id="decimal_degree_box" style="width:130px" /></td></tr>
+	</table>
+	
+	<table class="center" >
+		
+
+		<tr>
+			<td style="width:50px">Degrees:<input type="number" id="degree_box" style="width:50px" /></td>
+			<td style="width:50px">Minutes:<input type="number" id="minute_box" style="width:50px" /></td>
+			<td style="width:50px">Seconds:<input type="number" id="second_box" style="width:50px" /></td>
+		</tr>
+	</table>
+	<br/>
+	<p id="outputDMS" height="30px">** </p>
+	<input type="button" value="Clear All" onclick="clearAll()" />
+
+</div>
+
+
+</div>
+
+</body>

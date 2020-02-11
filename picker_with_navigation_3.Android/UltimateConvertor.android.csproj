@@ -51,9 +51,15 @@
     <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
     <BundleAssemblies>false</BundleAssemblies>
     <MandroidI18n />
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <AndroidSupportedAbis>armeabi-v7a;x86;x86_64;arm64-v8a</AndroidSupportedAbis>
+    <AndroidPackageFormat>apk</AndroidPackageFormat>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
+    <Reference Include="Mono.Security" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -62,9 +68,6 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xam.FormsPlugin.AdMobView">
-      <Version>1.0.23</Version>
-    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.3.0.908675" />
     <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
     <PackageReference Include="Xamarin.GooglePlayServices.Ads.Lite">
@@ -78,7 +81,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\materialdesignicons-webfont.ttf" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
@@ -111,9 +113,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\hp_calcs.html" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidAsset Include="Assets\circles_and_cylinders.html" />
   </ItemGroup>
   <ItemGroup>
@@ -129,7 +128,7 @@
     <AndroidAsset Include="Assets\loan.html" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\ultimate_convertor.html" />
+    <AndroidAsset Include="Assets\ultimate_converter.html" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\water_flow_calcs.html" />
@@ -154,6 +153,18 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\round_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\degreesminutesseconds.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\ohms_law.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\images\ohms_law.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\hp_calcs.html" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

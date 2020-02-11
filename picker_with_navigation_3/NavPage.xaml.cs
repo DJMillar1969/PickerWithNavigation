@@ -7,40 +7,31 @@ namespace UltimateConvertor
 {
 	public partial class NavPage : ContentPage
 	{
-
-
-		public IList<WebPage> WebPages { get; private set; }
+   		public IList<WebPage> WebPages { get; private set; }
 		public NavPage()
 		{
 			InitializeComponent();
-			Title = "Bonus Calculators";
+			//Title = "Bonus Calculators";
 
-			WebPages = new List<WebPage>();
 
-			WebPages.Add(new WebPage { Name = "loan.html", Title = "Loan Calculator" });
-			WebPages.Add(new WebPage { Name = "water_flow_calcs.html", Title = "Water Flow Calc's" });
-			WebPages.Add(new WebPage { Name = "hp_calcs.html", Title = "Horsepower Calc's" });
-			WebPages.Add(new WebPage { Name = "rectangles_and_boxes.html", Title = "Rectangle and Box Calc's" });
-			WebPages.Add(new WebPage { Name = "circles_and_cylinders.html", Title = "Circle and Cylinder Calc's" });
-			WebPages.Add(new WebPage { Name = "thermal_expansion_calculator.html", Title = "Thermal Expansion Calc's" });
-			WebPages.Add(new WebPage { Name = "triangle.html", Title = "Right Triangle Calculator" });
-			WebPages.Add(new WebPage { Name = "triangle2.html", Title = "Triangle Calculator" });
-			Button button = new Button
+			WebPages = new List<WebPage>
 			{
-				Text = "About",
-				VerticalOptions = LayoutOptions.Center,
-				HorizontalOptions = LayoutOptions.Center
+				new WebPage { Name = "loan.html", Title = "Loan Calculator" },
+				new WebPage { Name = "water_flow_calcs.html", Title = "Water Flow Calculator" },
+				new WebPage { Name = "hp_calcs.html", Title = "Horsepower Calculator" },
+				new WebPage { Name = "rectangles_and_boxes.html", Title = "Rectangle and Box Calculator" },
+				new WebPage { Name = "circles_and_cylinders.html", Title = "Circle and Cylinder Calculator" },
+				new WebPage { Name = "thermal_expansion_calculator.html", Title = "Thermal Expansion Calculator" },
+				new WebPage { Name = "triangle.html", Title = "Right Triangle Calculator" },
+				new WebPage { Name = "triangle2.html", Title = "Triangle Calculator" },
+				new WebPage { Name = "degreesminutesseconds.html", Title = "DMS Calculator" },
+				new WebPage { Name = "ohms_law.html", Title = "Ohm's Law Calculator" }
 			};
-			button.Clicked += async (sender, args) => await Navigation.PushAsync(new About());
 
-			var layout = new StackLayout();
-			layout.Children.Add(listView);
-			layout.Children.Add(button);
-			layout.Padding = new Thickness(20, 20, 20, 0);
-			Content = layout;
 
 			BindingContext = this;
 		}
+
 
 		private void OnListViewItemTapped(object sender, SelectedItemChangedEventArgs e)
 		{
@@ -54,12 +45,18 @@ namespace UltimateConvertor
 			Navigation.PushAsync(page);
 		}
 
+
 		protected override void OnAppearing()
 		{
 			base.OnAppearing();
 			listView.SelectedItem = null;
 		}
 
+
+		private void Button_Clicked(object sender, EventArgs e)
+		{
+			Navigation.PushAsync(new About());
+		}
 	}
 }
 

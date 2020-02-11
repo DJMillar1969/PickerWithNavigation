@@ -6,6 +6,12 @@
              mc:Ignorable="d"
              x:Class="UltimateConvertor.App">
     <Application.Resources>
-        
+        <ResourceDictionary>
+            <Color x:Key="Primary">#2296F3</Color>
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="BarTextColor" Value="White" />
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

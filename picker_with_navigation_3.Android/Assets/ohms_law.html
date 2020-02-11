@@ -1,0 +1,196 @@
+﻿<!DOCTYPE HTML>
+
+<html>
+<head>
+	<title>Ohm's Law Calculator</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+p  {
+    font-family: arial;
+    font-size: 120%;
+}
+
+.button{
+width:135px;
+height:30px;
+}
+
+div.center
+{
+  width: 310px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.center
+{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+</style>
+
+<script type="text/javascript">
+window.onload = addListeners;
+
+
+var inputlist="";
+
+
+function addListeners(){
+	document.getElementById('P_box').addEventListener("keyup",value_changed,false);
+	document.getElementById('I_box').addEventListener("keyup",value_changed,false);
+	document.getElementById('V_box').addEventListener("keyup",value_changed,false);
+	document.getElementById('R_box').addEventListener("keyup",value_changed,false);
+	
+	manageButtons(2);
+}
+
+
+function value_changed(){
+	
+	inputlist = "";
+	if (document.getElementById("P_box").value != ""){inputlist += "P"};
+	if (document.getElementById("I_box").value != ""){inputlist += "I"};
+	if (document.getElementById("V_box").value != ""){inputlist += "V"};
+	if (document.getElementById("R_box").value != ""){inputlist += "R"};
+	
+	manageButtons(2);
+}
+
+
+function calculatevalues(){
+	switch(inputlist){
+
+	case "PR":
+		var P = document.getElementById("P_box").value;
+		var R = document.getElementById("R_box").value;
+		var V = Math.sqrt(P*R);
+		var I = Math.sqrt(P/R);
+		
+		document.getElementById("V_box").value = V.toFixed(2);
+		document.getElementById("I_box").value = I.toFixed(2); 
+		break;
+	
+	case "PV":
+		var P = document.getElementById("P_box").value;
+		var V = document.getElementById("V_box").value;
+		var I = P/V;
+		var R = (V*V)/P;
+		
+		document.getElementById("I_box").value = I.toFixed(2);
+		document.getElementById("R_box").value = R.toFixed(2); 
+		break;
+
+	case "PI":
+
+		var P = document.getElementById("P_box").value;
+		var I = document.getElementById("I_box").value;
+		var V = P/I;		
+		var R= P/(I*I);
+				
+		document.getElementById("V_box").value = V.toFixed(2); 
+		document.getElementById("R_box").value = R.toFixed(2); 
+		break;
+
+	case "VR":
+		var R = document.getElementById("R_box").value;
+		var V = document.getElementById("V_box").value;
+		var P = (V*V)/R;
+		var I = V/R;
+		
+		document.getElementById("P_box").value = P.toFixed(2);
+		document.getElementById("I_box").value = I.toFixed(2); 
+		break;
+
+	case "IR":
+		var R = document.getElementById("R_box").value;
+		var I = document.getElementById("I_box").value;
+		var V = R*I;
+		var P = R*(I*I);
+
+		document.getElementById("V_box").value = V.toFixed(2); 
+		document.getElementById("P_box").value = P.toFixed(2); 
+		break;
+
+	case "IV":
+		var V = document.getElementById("V_box").value;
+		var I = document.getElementById("I_box").value;
+		var R = V/I;
+		var P = V*I;
+
+		document.getElementById("R_box").value = R.toFixed(2); 
+		document.getElementById("P_box").value = P.toFixed(2); 
+		break;
+
+
+	default:
+
+	}
+	inputlist = "calculated";
+	manageButtons(2);
+
+}
+
+function manageButtons(inputLength){
+
+var buttonElementId = "calculate_button";
+
+		if(inputlist == "calculated"){
+			document.getElementById(buttonElementId).disabled=true;
+			document.getElementById(buttonElementId).style="background-color:#f3f3f3";
+			document.getElementById(buttonElementId).value = ""; 
+		}else if(inputlist.length == inputLength){
+			document.getElementById(buttonElementId).disabled=false;
+			document.getElementById(buttonElementId).style ="background-color:silver";
+			document.getElementById(buttonElementId).value = "Calculate";
+		}else if(inputlist.length < inputLength){
+			document.getElementById("calculate_button").disabled=true;
+			document.getElementById(buttonElementId).style="background-color:#e6ffb3";
+			document.getElementById(buttonElementId).value = "Enter " + inputLength + " values";
+		}else if(inputlist.length > inputLength){
+			document.getElementById(buttonElementId).disabled=true;
+			document.getElementById(buttonElementId).style="background-color:red";
+			document.getElementById(buttonElementId).value = "Enter only " + inputLength + " values";
+		}
+}
+
+function clear_box(id){
+	document.getElementById(id).value = "";
+	value_changed();
+}
+
+</script>
+	
+</head>
+
+<body>
+
+<div class="center">
+<img src="images\ohms_law.jpg" width="275" class="center">
+
+<h2 class="center">Ohm's Law Calculator</h2>
+
+
+<table class="center">
+<tr><td>V - volts:</td><td><input type="number" id="V_box"/><button onclick=(clear_box("V_box"))>X</button></td></tr>
+<tr><td>I - amps:</td><td><input type="number" id="I_box"/><button onclick=(clear_box("I_box"))>X</button></td></tr>
+<tr><td>P - watts:</td><td><input type="number" id="P_box" /><button onclick=(clear_box("P_box"))>X</button></td></tr>
+<tr><td>R - ohms:</td><td><input type="number" id="R_box"/><button onclick=(clear_box("R_box"))>X</button></td></tr>
+<tr><td></td><td align="left"><input type="button" class="button" id="calculate_button" onClick="calculatevalues()" /></td></tr>
+</table>
+
+<div style="height:200px"></div>
+
+</div>
+
+</body>
+</html>

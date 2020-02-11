@@ -3,21 +3,34 @@
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     x:Class="UltimateConvertor.NavPage"
-    >
-	
-        <ListView ItemsSource="{Binding WebPages}"
-           x:Name="listView"       
-          ItemSelected="OnListViewItemTapped">
+     xmlns:ads="clr-namespace:UltimateConvertor.Controls;assembly=UltimateConvertor">
 
-            <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                        <Label 
-                           Text="{Binding Title}"
-                           FontAttributes="Bold" 
-                           />
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-        </ListView>
+    <NavigationPage.TitleView>
+        <Label Text="Bonus Calculators" FontSize="25" TextColor="White"/>
+    </NavigationPage.TitleView>
+
+
+    <StackLayout>
+        <StackLayout Padding = "20, 20, 20, 0">
+            <ListView ItemsSource="{Binding WebPages}"
+               x:Name="listView"       
+              ItemSelected="OnListViewItemTapped"
+              >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                                <Label 
+                                   Text="{Binding Title}"
+                                   FontAttributes="Bold" 
+                                    FontSize="20"
+                                   />
+                        </ViewCell>
+                    </DataTemplate>
+            </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>    
+        <Button Text="About" Clicked="Button_Clicked" WidthRequest="150" HorizontalOptions="Center" />
+        <!--<ads:AdControlView x:Name="AdBox" BackgroundColor="#FF2296F3" HeightRequest="65" HorizontalOptions="FillAndExpand" VerticalOptions="End"/>-->
+    </StackLayout>
+    
 </ContentPage>
